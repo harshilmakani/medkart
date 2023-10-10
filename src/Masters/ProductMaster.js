@@ -21,6 +21,16 @@ const ProductMaster =()=>{
                                     <Dropdown.Item href="#/action-1">Add New Shortcut</Dropdown.Item>
                                     <Dropdown.Item href="#/action-2">Customize</Dropdown.Item>
                                 </Dropdown.Menu>
+                            </Dropdown>    
+                            {/* testing for git */}
+                            <Dropdown>
+                                <Dropdown.Toggle variant="" id="dropdown-basic">
+                                <img src="./setting_dashboard.svg" alt='setting_icon' />
+                                </Dropdown.Toggle>                                                                
+                                <Dropdown.Menu >
+                                    <Dropdown.Item href="#/action-1">Add New Shortcut</Dropdown.Item>
+                                    <Dropdown.Item href="#/action-2">Customize</Dropdown.Item>
+                                </Dropdown.Menu>
                             </Dropdown>                            
                         </div>
                     </div>
