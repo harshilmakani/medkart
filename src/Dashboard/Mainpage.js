@@ -12,7 +12,7 @@ const Mainpage = () => {
                     <div className="col-12 d-flex justify-content-between align-items-center py-2  border-bottom">
                         <div className="col-2 p-2 ms-2">Short-Cuts</div>
                         <div className="col-1 p-2 text-end">
-                            <Dropdown>
+                            {/* <Dropdown>
                                 <Dropdown.Toggle variant="" id="dropdown-basic">
                                 <img src="./setting_dashboard.svg" alt='setting_icon' />
                                 </Dropdown.Toggle>                                                                
@@ -20,7 +20,7 @@ const Mainpage = () => {
                                     <Dropdown.Item href="#/action-1">Add New Shortcut</Dropdown.Item>
                                     <Dropdown.Item href="#/action-2">Customize</Dropdown.Item>
                                 </Dropdown.Menu>
-                            </Dropdown>                            
+                            </Dropdown>                             */}
                         </div>
                     </div>
                     <div className="col-12 py-4 px-2 ms-3">
