@@ -1,16 +1,17 @@
-import React from 'react';
-import Dashboard from './Dashboard/Dashboard';
 import { BrowserRouter } from 'react-router-dom';
+import './App.css';
+import Dashboard from './Dashboard/Dashboard';
 
-const App = () => {
-    return (
-        <div>
-            <BrowserRouter>
-                <Dashboard />
-            </BrowserRouter>
 
-        </div>
-    );
+function App() {
+  return (
+    <div className="App">
+      <BrowserRouter>
+        <Dashboard />
+      </BrowserRouter>
+
+    </div>
+  );
 }
 
 export default App;

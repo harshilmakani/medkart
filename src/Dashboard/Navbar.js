@@ -93,19 +93,20 @@ const Navbar = () => {
                                         <span className="text-dark">Masters</span>
                                     </Dropdown.Toggle>
                                     <Dropdown.Menu>
-                                        <Dropdown.Item ><Link to="/ProductMaster">Product Master</Link></Dropdown.Item>
-                                        <Dropdown.Item href="./Master/ProductMaster">Location Master</Dropdown.Item>
-                                        <Dropdown.Item href="#/action-3">Min Max Master</Dropdown.Item>
-                                        <Dropdown.Item href="#/action-4">Molecule Master</Dropdown.Item>
-                                        <Dropdown.Item href="#/action-5">Manufacture Master</Dropdown.Item>
-                                        <Dropdown.Item href="#/action-6">B2B Pricing Master</Dropdown.Item>
-                                        <Dropdown.Item href="#/action-7">B2C Pricing Master</Dropdown.Item>
-                                        <Dropdown.Item href="#/action-8">Vendor Master</Dropdown.Item>
-                                        <Dropdown.Item href="#/action-9">Batch Master</Dropdown.Item>
-                                        <Dropdown.Item href="#/action-10">Store Master</Dropdown.Item>
-                                        <Dropdown.Item href="#/action-11">Warehouse Master</Dropdown.Item>
-                                        <Dropdown.Item href="#/action-12">Product Channel Mapping</Dropdown.Item>
-                                        <Dropdown.Item href="#/action-13">MRP/PTR Mapping</Dropdown.Item>
+                                        <Dropdown.Item ><Link to="/ProductMaster" className="no-underline">Product Master</Link></Dropdown.Item>
+                                        <Dropdown.Item ><Link to="/locationmaster" className="no-underline">Location Master</Link></Dropdown.Item>
+                                        <Dropdown.Item ><Link to="/minmaxmaster" className="no-underline">Min Max Master</Link></Dropdown.Item>
+                                        <Dropdown.Item ><Link to="/moleculemaster" className="no-underline">Molecule Master</Link></Dropdown.Item>
+                                        <Dropdown.Item ><Link to="/manufacturemaster" className="no-underline">Manufacture Master</Link></Dropdown.Item>
+                                        <Dropdown.Item ><Link to="/b2bPricingMaster" className="no-underline">B2B Pricing Master</Link></Dropdown.Item>
+                                        <Dropdown.Item ><Link to="/b2cPricingMaster" className="no-underline">B2C Pricing Master</Link></Dropdown.Item>
+                                        <Dropdown.Item ><Link to="/vendormaster" className="no-underline">Vendor Master</Link></Dropdown.Item>
+                                        <Dropdown.Item ><Link to="/batchmaster" className="no-underline">Batch Master</Link></Dropdown.Item>
+                                        <Dropdown.Item ><Link to="/storemaster" className="no-underline">Store Master</Link></Dropdown.Item>
+                                        <Dropdown.Item ><Link to="/warehousemaster" className="no-underline">Warehouse Master</Link></Dropdown.Item>
+                                        <Dropdown.Item ><Link to="/productchannelmapping" className="no-underline">Product Channel Mapping</Link></Dropdown.Item>
+                                        <Dropdown.Item ><Link to="/mrp_ptr_mapping" className="no-underline">MRP/PTR Mapping</Link></Dropdown.Item>
+                                        
                                     </Dropdown.Menu>
                                 </Dropdown>
                             </li>
@@ -116,9 +117,9 @@ const Navbar = () => {
                                         <span className="text-dark">Inventory</span>
                                     </Dropdown.Toggle>
                                     <Dropdown.Menu>
-                                        <Dropdown.Item href="#/action-1">Stock Adjestment</Dropdown.Item>
-                                        <Dropdown.Item href="#/action-2">Reallocation</Dropdown.Item>
-                                        <Dropdown.Item href="#/action-3">Stock Rearranger</Dropdown.Item>
+                                        <Dropdown.Item ><Link to="/stockadjustment" className="no-underline">Stock Adjustment</Link></Dropdown.Item>
+                                        <Dropdown.Item ><Link to="/reallocation" className="no-underline">Reallocation</Link></Dropdown.Item>
+                                        <Dropdown.Item ><Link to="/stockrearrange" className="no-underline">Stock Rearrange</Link></Dropdown.Item>
                                     </Dropdown.Menu>
                                 </Dropdown>
                             </li>
@@ -143,9 +144,9 @@ const Navbar = () => {
                                     <Dropdown.Menu>
                                         <Dropdown.Item href="#/action-1">Pending Sales Order</Dropdown.Item>
                                         <Dropdown.Item href="#/action-2">Pick Note</Dropdown.Item>
-                                        <Dropdown.Item href="#/action-3">Transfer Out</Dropdown.Item>
-                                        <Dropdown.Item href="#/action-4">Internal Sales</Dropdown.Item>
-                                        <Dropdown.Item href="#/action-5">B2C Sales</Dropdown.Item>
+                                        <Dropdown.Item ><Link to="/transferout" className="no-underline">Transfer Out</Link></Dropdown.Item>
+                                        <Dropdown.Item ><Link to="/internalsales" className="no-underline">Internal Sales</Link></Dropdown.Item>
+                                        <Dropdown.Item ><Link to="/b2csales" className="no-underline">B2C Sales</Link></Dropdown.Item>
                                         <Dropdown.Item href="#/action-6">Purchase Return</Dropdown.Item>
                                     </Dropdown.Menu>
                                 </Dropdown>
