@@ -1,14 +1,14 @@
-import React from "react";
+import React from 'react';
 import { InputGroup, Form } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import { Link } from "react-router-dom";
 import Appdata from "../Appdata";
 import Table from 'react-bootstrap/Table';
-import Paginationshow from "../Dashboard/Paginationshow";
+import Paginationshow from '../Dashboard/Paginationshow';
 
-const ProductMaster = () => {
-    const { unpublished } = Appdata;
+const ProductChannelMapping = () => {
+    const { productchannelmapping } = Appdata;
     return (
         <div>
             <div className="vh-100 w-auto" >
@@ -16,15 +16,14 @@ const ProductMaster = () => {
                     <div className="col my-4 p-0 d-flex justify-content-between">
                         <div className="d-flex align-items-center">
                             <Link to="/" className="me-3"><img src="./home_breadcrumb.svg" alt="home_breadcrumb-icon" /></Link>
-                            <span className="text-secondary">Product Master</span>
+                            <span className="text-secondary">Product Channel Mapping</span>
                         </div>
-                        <div><button className="btn btn-primary px-3">+ Add</button></div>
+                        <div>                            
+                            <button className='btn btn-outline-primary me-3'>Import</button>
+                            <button className="btn btn-outline-primary px-3">Download</button>
+                        </div>
                     </div>
                     <div className="row shadow-sm  gx-0 rounded-1" style={{ background: "#fff" }}>
-                        <div className="col d-flex  align-items-center py-1  border-bottom">
-                            <div className="p-2 ms-4">Unpublished/Draft</div>
-                            <div className="p-2 ms-3 text-end">Published</div>
-                        </div>
                         <div className="col-12 py-2 px-4 d-flex justify-content-between align-items-center">
                             <div className="col-4">
                                 <InputGroup className="my-2 me-3">
@@ -34,10 +33,7 @@ const ProductMaster = () => {
                                         className="w-50 border-start-0"
                                     />
                                     <Form.Select aria-label="Default select example">
-                                        <option > Product Code</option>
-                                        <option value="1">Wendersoft</option>
-                                        <option value="2">Product Name</option>
-                                        <option value="3">Manufacturer</option>
+                                        <option > Product </option>                                
                                     </Form.Select>
                                 </InputGroup>
                             </div>
@@ -48,13 +44,13 @@ const ProductMaster = () => {
                                 </ButtonGroup>
                             </div>
                         </div>
-                        <div className="p-0">
+                        <div className="mt-2">
 
                             <Table responsive>
-                                <thead  style={{ background: '#ebeef0' }}>
+                                <thead style={{ background: '#ebeef0' }}>
                                     <tr>
                                         {
-                                            Object.keys(unpublished[0]).map((d, i) => {
+                                            Object.keys(productchannelmapping[0]).map((d, i) => {
                                                 return (
                                                     <td className="text-capitalize">{d.replace(/_/g, ' ')}</td>
                                                 );
@@ -63,29 +59,25 @@ const ProductMaster = () => {
                                         <th></th>
                                     </tr>
                                 </thead>
-                                <tbody style={{ borderStyle: 'none'}}>
+                                <tbody style={{ borderStyle: 'none' }}>
                                     {
-                                        unpublished.map((data, i) => {
+                                        productchannelmapping.map((data, i) => {
                                             return (
-                                                <tr>{
-                                                    Object.keys(unpublished[0]).map((d, i) => {
-                                                        console.log(d);
-                                                        return (
-                                                            <td>{data[d] === "Published" ?
-                                                                <span className="d-flex align-items-center justify-content-center rounded-pill px-2" style={{ backgroundColor: 'rgb(186, 240, 218)', width: 'fit-content' }}>
-                                                                    <span className="p-1 rounded-circle me-1 " style={{ backgroundColor: 'rgb(0, 127, 95)' }}></span>
-                                                                    <span>Published</span>
-                                                                </span> : data[d] === "Unpublished" ?
-                                                                    <span className="d-flex align-items-center justify-content-center rounded-pill px-2" style={{ backgroundColor: 'rgb(255, 219, 185)', width: 'fit-content' }}>
-                                                                        <span className="p-1 rounded-circle me-1 " style={{ backgroundColor: 'rgb(228, 130, 75)' }}></span>
-                                                                        <span>Unpublished</span>
-                                                                    </span> : data[d]}</td>
-                                                        );
-                                                    })}
-                                                    <td className="ps-5">
+                                                <tr>
+                                                    {
+                                                        Object.keys(productchannelmapping[0]).map((d, i) => {
+
+                                                            return (
+                                                                <td>{d === "available" ? <span className='text-success'>{data[d]}</span>
+                                                                    : d === "reserved" ? <span className='text-warning'>{data[d]}</span>
+                                                                        : d === "on_hold" ? <span className='text-danger'>{data[d]}</span>
+                                                                            : data[d]
+                                                                }</td>
+                                                            );
+                                                        })}
+                                                    <td>
                                                         <div className='d-flex justify-content-end me-2'>
-                                                            <button className='p-0 border-0 me-2 rounded-1'><img src='Edit-button.svg' alt='editbutton' /></button>
-                                                            <button className='p-0 border-0 rounded-1'><img src='copy-button.svg' alt='copybutton' /></button>
+                                                            <button className='p-0 border-0 rounded-1'><img src='Edit-button.svg' alt='editbutton' /></button>
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -100,7 +92,7 @@ const ProductMaster = () => {
                 </div>
             </div>
         </div >
-    )
+    );
 }
 
-export default ProductMaster;
+export default ProductChannelMapping;

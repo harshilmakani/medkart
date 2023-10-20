@@ -98,7 +98,7 @@ const Navbar = () => {
                                         <Dropdown.Item ><Link to="/minmaxmaster" className="no-underline">Min Max Master</Link></Dropdown.Item>
                                         <Dropdown.Item ><Link to="/moleculemaster" className="no-underline">Molecule Master</Link></Dropdown.Item>
                                         <Dropdown.Item ><Link to="/manufacturemaster" className="no-underline">Manufacture Master</Link></Dropdown.Item>
-                                        <Dropdown.Item ><Link to="/b2bPricingMaster" className="no-underline">B2B Pricing Master</Link></Dropdown.Item>
+                                        <Dropdown.Item ><Link to="/b2bpricingmaster" className="no-underline">B2B Pricing Master</Link></Dropdown.Item>
                                         <Dropdown.Item ><Link to="/b2cPricingMaster" className="no-underline">B2C Pricing Master</Link></Dropdown.Item>
                                         <Dropdown.Item ><Link to="/vendormaster" className="no-underline">Vendor Master</Link></Dropdown.Item>
                                         <Dropdown.Item ><Link to="/batchmaster" className="no-underline">Batch Master</Link></Dropdown.Item>
@@ -161,11 +161,11 @@ const Navbar = () => {
                                         <Dropdown.Item href="#/action-1">Purchase Indent</Dropdown.Item>
                                         <Dropdown.Item href="#/action-2">Purchase Order</Dropdown.Item>
                                         <Dropdown.Item href="#/action-3">Gate Pass</Dropdown.Item>
-                                        <Dropdown.Item href="#/action-4">Checking Tracker</Dropdown.Item>
-                                        <Dropdown.Item href="#/action-5">GRN</Dropdown.Item>
-                                        <Dropdown.Item href="#/action-6">Purchase Invoice</Dropdown.Item>
-                                        <Dropdown.Item href="#/action-7">Return (inward)</Dropdown.Item>
-                                        <Dropdown.Item href="#/action-8">Credit Note</Dropdown.Item>
+                                        <Dropdown.Item ><Link to="/checkingtracker" className="no-underline">Checking Tracker</Link></Dropdown.Item>
+                                        <Dropdown.Item ><Link to="/grn" className="no-underline">GRN</Link></Dropdown.Item>
+                                        <Dropdown.Item ><Link to="/purchaseinvoice" className="no-underline">Purchase Invoice</Link></Dropdown.Item>
+                                        <Dropdown.Item ><Link to="/returninward" className="no-underline">Return (Inward)</Link></Dropdown.Item>
+                                        <Dropdown.Item ><Link to="/creditnotes" className="no-underline">Credit Notes</Link></Dropdown.Item>
                                     </Dropdown.Menu>
                                 </Dropdown>
                             </li>
@@ -176,9 +176,9 @@ const Navbar = () => {
                                         <span className="text-dark">Banking</span>
                                     </Dropdown.Toggle>
                                     <Dropdown.Menu>
-                                        <Dropdown.Item href="#/action-1">Bank Master</Dropdown.Item>
-                                        <Dropdown.Item href="#/action-2">Receipts</Dropdown.Item>
-                                        <Dropdown.Item href="#/action-3">Payments</Dropdown.Item>
+                                        <Dropdown.Item ><Link to="/bankmaster" className="no-underline">Bank Master</Link></Dropdown.Item>
+                                        <Dropdown.Item ><Link to="/receiptdata" className="no-underline">Receipts</Link></Dropdown.Item>
+                                        <Dropdown.Item ><Link to="/payments" className="no-underline">Payments</Link></Dropdown.Item>
                                     </Dropdown.Menu>
                                 </Dropdown>
                             </li>
@@ -195,9 +195,9 @@ const Navbar = () => {
                                         <span className="text-dark">Settings</span>
                                     </Dropdown.Toggle>
                                     <Dropdown.Menu>
-                                        <Dropdown.Item href="#/action-1">Users & Roles</Dropdown.Item>
-                                        <Dropdown.Item href="#/action-2">Import History</Dropdown.Item>
-                                        <Dropdown.Item href="#/action-3">Export History</Dropdown.Item>
+                                        <Dropdown.Item ><Link to="/userAndroles" className="no-underline">User & Roles</Link></Dropdown.Item>
+                                        <Dropdown.Item ><Link to="/importhistory" className="no-underline">Import History</Link></Dropdown.Item>
+                                        <Dropdown.Item ><Link to="/exporthistory" className="no-underline">Export History</Link></Dropdown.Item>
                                     </Dropdown.Menu>
                                 </Dropdown>
                             </li>

@@ -7,8 +7,8 @@ import Appdata from "../Appdata";
 import Table from 'react-bootstrap/Table';
 import Paginationshow from "../Dashboard/Paginationshow";
 
-const ProductMaster = () => {
-    const { unpublished } = Appdata;
+const VendorMaster = () => {
+    const { vendormaster } = Appdata;
     return (
         <div>
             <div className="vh-100 w-auto" >
@@ -16,14 +16,14 @@ const ProductMaster = () => {
                     <div className="col my-4 p-0 d-flex justify-content-between">
                         <div className="d-flex align-items-center">
                             <Link to="/" className="me-3"><img src="./home_breadcrumb.svg" alt="home_breadcrumb-icon" /></Link>
-                            <span className="text-secondary">Product Master</span>
+                            <span className="text-secondary">Vendor Master</span>
                         </div>
                         <div><button className="btn btn-primary px-3">+ Add</button></div>
                     </div>
-                    <div className="row shadow-sm  gx-0 rounded-1" style={{ background: "#fff" }}>
-                        <div className="col d-flex  align-items-center py-1  border-bottom">
-                            <div className="p-2 ms-4">Unpublished/Draft</div>
-                            <div className="p-2 ms-3 text-end">Published</div>
+                    <div className="row shadow-sm p-0 gx-0 rounded-1" style={{ background: "#fff" }}>
+                        <div className="col d-flex  align-items-center py-1 ps-4 border-bottom">
+                            <div className="p-2 me-3">Unpublished/Draft</div>
+                            <div className="p-2 text-end ms-1">Published</div>
                         </div>
                         <div className="col-12 py-2 px-4 d-flex justify-content-between align-items-center">
                             <div className="col-4">
@@ -34,10 +34,11 @@ const ProductMaster = () => {
                                         className="w-50 border-start-0"
                                     />
                                     <Form.Select aria-label="Default select example">
-                                        <option > Product Code</option>
-                                        <option value="1">Wendersoft</option>
-                                        <option value="2">Product Name</option>
-                                        <option value="3">Manufacturer</option>
+                                        <option >Vendor Name</option>
+                                        <option >Contact Name</option>
+                                        <option >Contact Mobile</option>
+                                        <option >Contact Email</option>
+
                                     </Form.Select>
                                 </InputGroup>
                             </div>
@@ -51,10 +52,10 @@ const ProductMaster = () => {
                         <div className="p-0">
 
                             <Table responsive>
-                                <thead  style={{ background: '#ebeef0' }}>
-                                    <tr>
+                                <thead style={{ background: '#ebeef0' }}>
+                                    <tr className="">
                                         {
-                                            Object.keys(unpublished[0]).map((d, i) => {
+                                            Object.keys(vendormaster[0]).map((d, i) => {
                                                 return (
                                                     <td className="text-capitalize">{d.replace(/_/g, ' ')}</td>
                                                 );
@@ -63,29 +64,29 @@ const ProductMaster = () => {
                                         <th></th>
                                     </tr>
                                 </thead>
-                                <tbody style={{ borderStyle: 'none'}}>
+                                <tbody style={{ borderStyle: 'none' }}>
                                     {
-                                        unpublished.map((data, i) => {
+                                        vendormaster.map((data, i) => {
                                             return (
-                                                <tr>{
-                                                    Object.keys(unpublished[0]).map((d, i) => {
-                                                        console.log(d);
+                                                <tr>                                                   
+                                                    {
+                                                    Object.keys(vendormaster[0]).map((d, i) => {
+
                                                         return (
                                                             <td>{data[d] === "Published" ?
                                                                 <span className="d-flex align-items-center justify-content-center rounded-pill px-2" style={{ backgroundColor: 'rgb(186, 240, 218)', width: 'fit-content' }}>
                                                                     <span className="p-1 rounded-circle me-1 " style={{ backgroundColor: 'rgb(0, 127, 95)' }}></span>
                                                                     <span>Published</span>
-                                                                </span> : data[d] === "Unpublished" ?
-                                                                    <span className="d-flex align-items-center justify-content-center rounded-pill px-2" style={{ backgroundColor: 'rgb(255, 219, 185)', width: 'fit-content' }}>
-                                                                        <span className="p-1 rounded-circle me-1 " style={{ backgroundColor: 'rgb(228, 130, 75)' }}></span>
-                                                                        <span>Unpublished</span>
+                                                                </span> : data[d] === "Draft" ?
+                                                                    <span className="d-flex align-items-center justify-content-center rounded-pill px-2" style={{ backgroundColor: 'rgb(235, 238, 240)', width: 'fit-content' }}>
+                                                                        <span className="p-1 rounded-circle me-1 " style={{ backgroundColor: 'rgb(192, 192, 192)' }}></span>
+                                                                        <span>Draft</span>
                                                                     </span> : data[d]}</td>
                                                         );
                                                     })}
-                                                    <td className="ps-5">
+                                                    <td>
                                                         <div className='d-flex justify-content-end me-2'>
-                                                            <button className='p-0 border-0 me-2 rounded-1'><img src='Edit-button.svg' alt='editbutton' /></button>
-                                                            <button className='p-0 border-0 rounded-1'><img src='copy-button.svg' alt='copybutton' /></button>
+                                                            <button className='p-0 border-0 rounded-1'><img src='Edit-button.svg' alt='editbutton' /></button>
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -103,4 +104,4 @@ const ProductMaster = () => {
     )
 }
 
-export default ProductMaster;
+export default VendorMaster;
