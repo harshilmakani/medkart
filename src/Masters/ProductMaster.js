@@ -4,7 +4,7 @@ import Dropdown from 'react-bootstrap/Dropdown';
 const ProductMaster =()=>{
     return(
         <div>
-            <div className="vh-100 w-auto" >
+            <div  className="vh-100 w-auto" >
                 <div className="mt-4" style={{ marginRight: "165px", marginLeft: "165px" }} >
                     <div className="col my-4">
                         <span className="text-secondary"> ProductMaster</span>
