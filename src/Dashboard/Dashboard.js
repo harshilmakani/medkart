@@ -31,6 +31,7 @@ import UserAndRoles from "../Settings/UserAndRoles";
 import ImportHistory from "../Settings/ImportHistory";
 import B2bPricingMaster from "../Masters/B2bPricingMaster";
 import ExportHistory from "../Settings/ExportHistory";
+import Test from "../Test";
 
 
 const Dashboard = () => {
@@ -74,7 +75,8 @@ const Dashboard = () => {
                     {/* <Route exact path='/payments' element={<Payments/>}/> */}
                     {/* <Route exact path='/payments' element={<Payments/>}/> */}
 
-                </Routes>                       
+                </Routes> 
+                <Test/>                      
         </div>
     );
 }

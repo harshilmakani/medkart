@@ -16,7 +16,7 @@ const B2bPricingMaster = () => {
                     <div className="col my-4 p-0 d-flex justify-content-between">
                         <div className="d-flex align-items-center">
                             <Link to="/" className="me-3"><img src="./home_breadcrumb.svg" alt="home_breadcrumb-icon" /></Link>
-                            <span className="text-secondary">User & Roles</span>
+                            <span className="text-secondary">B2B Pricing Master (Template Master)</span>
                         </div>
                         <div>
                             <button className="btn btn-primary px-3">+ Add</button>
