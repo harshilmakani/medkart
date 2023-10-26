@@ -32,3 +32,10 @@
   color: #fff;
   box-shadow: none;
 }
+
+.page-link.active{
+  background-color: #5556a6;
+  color: #fff;
+  box-shadow: none;
+}
+

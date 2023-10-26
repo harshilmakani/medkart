@@ -36,12 +36,14 @@ const Tables = (props) => {
                     <tbody style={{ borderStyle: 'none' }}>
                         {
                             currentItems.map((data, i) => {
+                                                                      
                                 return (
                                     <tr key={i}>{
                                         datacolumn.map((d, index) => { 
-                                            console.log(d);                                           
+                                          
                                             return (
-                                                <td key={index} className={`${d.valueTdClass}`}>{ data[d.fieldKey] === "Published" ?
+                                                <td key={index} className={`${d.valueTdClass}`}>{ 
+                                                    data[d.fieldKey] === "Published" ?
                                                     <span className="d-flex align-items-center justify-content-center rounded-pill px-2" style={{ backgroundColor: 'rgb(186, 240, 218)', width: 'fit-content' }}>
                                                         <span className="p-1 rounded-circle me-1 " style={{ backgroundColor: 'rgb(0, 127, 95)' }}></span>
                                                         <span>{data?.[d?.fieldKey] ?? ''}</span>
@@ -49,15 +51,10 @@ const Tables = (props) => {
                                                         <span className="d-flex align-items-center justify-content-center rounded-pill px-2" style={{ backgroundColor: 'rgb(255, 219, 185)', width: 'fit-content' }}>
                                                             <span className="p-1 rounded-circle me-1 " style={{ backgroundColor: 'rgb(228, 130, 75)' }}></span>
                                                             <span>{data[d.fieldKey]}</span>
-                                                        </span> : data?.[d?.fieldKey]
-
-                                                        // {d?.customfield && <div className='d-flex justify-content-end me-2'>{d?.customfield()}</div>} 
+                                                        </span> : data?.[d?.fieldKey] ??<div className='d-flex justify-content-end me-2'>{d.customfield()}</div>
+                                                        }
                                                         
-                                                            // <div className='d-flex justify-content-end me-2'>
-                                                            //     <button className={`${d.btnclass}`}><img src='Edit-button.svg' alt='editbutton' /></button>
-                                                            //     <button className={`${d.btnclass}`}><img src='copy-button.svg' alt='copybutton' /></button>
-                                                            // </div> : data?.[d?.fieldKey] ?? ''
-                                                }</td>
+                                                </td>
                                             );
                                         })}                                        
                                     </tr>
@@ -96,3 +93,11 @@ const Tables = (props) => {
 }
 
 export default Tables;
+
+ // <div className='d-flex justify-content-end me-2'>{d?.customfield()}</div>
+                                                        // {d?.customfield && <div className='d-flex justify-content-end me-2'>{d?.customfield()}</div>} 
+                                                        
+                                                            // <div className='d-flex justify-content-end me-2'>
+                                                            //     <button className={`${d.btnclass}`}><img src='Edit-button.svg' alt='editbutton' /></button>
+                                                            //     <button className={`${d.btnclass}`}><img src='copy-button.svg' alt='copybutton' /></button>
+                                                            // </div> : data?.[d?.fieldKey] ?? ''
