@@ -80,8 +80,8 @@ const ExportHistory = () => {
                                                                     <td className={`${d.valueTdClass}`}>{data[d.fieldKey] === "None" ?
                                                                         <span className="d-flex align-items-center justify-content-center rounded-pill px-2" style={{ backgroundColor: 'rgb(186, 240, 218)', width: 'fit-content' }}>
                                                                             <span className="p-1 rounded-circle me-1 " style={{ backgroundColor: 'rgb(0, 127, 95)' }}></span>
-                                                                            <span>{data[d.fieldKey]}</span>
-                                                                        </span> : data[d.fieldKey]
+                                                                            <span>{data?.[d?.fieldKey] ?? ""}</span>
+                                                                        </span> : data?.[d?.fieldKey] ?? ""
                                                                     }</td>
                                                                 );
                                                             })
