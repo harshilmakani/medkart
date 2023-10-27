@@ -5,26 +5,12 @@
 .no-underline{
   text-decoration: none;
   color: black;
-}
-/* 
-.pagination {
-  text-decoration: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.2rem;
-  gap: 5px;
-}
+} 
 
-.pagination .page-num{
-  padding: 8px 15px;
-  cursor: pointer;
-  border-radius: 3px;
-  font-weight: 400;
-} */
 
  .pagination .page-link{  
   color: #5556a6;
+  
 }
 
 .page-link.active:focus{
@@ -38,4 +24,3 @@
   color: #fff;
   box-shadow: none;
 }
-

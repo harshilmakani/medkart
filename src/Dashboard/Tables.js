@@ -27,7 +27,15 @@ const Tables = (props) => {
                             {
                                 datacolumn.map((d, i) => {
                                     return (
-                                        <td key={i} className={`${d.tdClass}`}>{d.lebal}</td>
+                                        <>
+                                        
+                                        <td key={i} className={`${d.tdClass}`}>
+                                        {
+                                            d?.enableCheck && <input className="form-check-input me-3 g-0" type="checkbox" value="" />
+                                        }
+                                        {d?.label}
+                                        </td>
+                                        </>
                                     );
                                 })
                             }                            
@@ -35,25 +43,16 @@ const Tables = (props) => {
                     </thead>
                     <tbody style={{ borderStyle: 'none' }}>
                         {
-                            currentItems.map((data, i) => {
-                                                                      
+                            currentItems.map((data, i) => {                                                                     
                                 return (
                                     <tr key={i}>{
                                         datacolumn.map((d, index) => { 
                                           
                                             return (
-                                                <td key={index} className={`${d.valueTdClass}`}>{ 
-                                                    data[d.fieldKey] === "Published" ?
-                                                    <span className="d-flex align-items-center justify-content-center rounded-pill px-2" style={{ backgroundColor: 'rgb(186, 240, 218)', width: 'fit-content' }}>
-                                                        <span className="p-1 rounded-circle me-1 " style={{ backgroundColor: 'rgb(0, 127, 95)' }}></span>
-                                                        <span>{data?.[d?.fieldKey] ?? ''}</span>
-                                                    </span> : data[d.fieldKey] === "Unpublished" ?
-                                                        <span className="d-flex align-items-center justify-content-center rounded-pill px-2" style={{ backgroundColor: 'rgb(255, 219, 185)', width: 'fit-content' }}>
-                                                            <span className="p-1 rounded-circle me-1 " style={{ backgroundColor: 'rgb(228, 130, 75)' }}></span>
-                                                            <span>{data[d.fieldKey]}</span>
-                                                        </span> : data?.[d?.fieldKey] ??<div className='d-flex justify-content-end me-2'>{d.customfield()}</div>
-                                                        }
-                                                        
+                                                <td key={index} className={`${d.valueTdClass}`}>{                                                     
+                                                    d.fieldKey === "status" ? d.customfield(data[d.fieldKey])
+                                                     : d.customfield ? d.customfield(data) : data?.[d?.fieldKey]
+                                                        }                                                        
                                                 </td>
                                             );
                                         })}                                        
@@ -93,11 +92,3 @@ const Tables = (props) => {
 }
 
 export default Tables;
-
- // <div className='d-flex justify-content-end me-2'>{d?.customfield()}</div>
-                                                        // {d?.customfield && <div className='d-flex justify-content-end me-2'>{d?.customfield()}</div>} 
-                                                        
-                                                            // <div className='d-flex justify-content-end me-2'>
-                                                            //     <button className={`${d.btnclass}`}><img src='Edit-button.svg' alt='editbutton' /></button>
-                                                            //     <button className={`${d.btnclass}`}><img src='copy-button.svg' alt='copybutton' /></button>
-                                                            // </div> : data?.[d?.fieldKey] ?? ''

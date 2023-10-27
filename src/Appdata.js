@@ -2930,37 +2930,71 @@ const testdata = [
 const testdatacolumn = [
     {
         fieldKey: 'product_code',
-        lebal: 'Product Code',
+        label: 'Product Code',
         tdClass: 'ps-3',
         valueTdClass: 'ps-3',
+        enableCheck:true,
+        customfield: (row) => {
+            return (
+                <div className="d-flex">
+                    <input className="form-check-input me-3 g-0" type="checkbox" value=""></input>                                       
+                    {row.label && <p className="mb-0">{row.label}</p>}
+                    {row.product_code && <p className="mb-0">{row.product_code}</p>}
+                </div>
+            );
+        },
     },
     {
         fieldKey: 'wondersoft_code',
-        lebal: 'Wondersoft Code',
+        label: 'Wondersoft Code',
     },
     {
         fieldKey: 'product_name',
-        lebal: 'Product Name',
+        label: 'Product Name',
     },
     {
         fieldKey: 'manufacturer',
-        lebal: 'Manufacturer',
+        label: 'Manufacturer',
     },
     {
         fieldKey: 'combination',
-        lebal: 'Combination',
+        label: 'Combination',
     },
     {
         fieldKey: 'status',
-        lebal: 'Status',
+        label: 'Status',
+        customfield: (row) => {
+            return (
+                row === "Published" ?
+                    <span className="d-flex align-items-center justify-content-center rounded-pill px-2" style={{ backgroundColor: 'rgb(186, 240, 218)', width: 'fit-content' }}>
+                        <span className="p-1 rounded-circle me-1 " style={{ backgroundColor: 'rgb(0, 127, 95)' }}></span>
+                        <span>{row}</span>
+                    </span> : row === "Unpublished" ?
+                        <span className="d-flex align-items-center justify-content-center rounded-pill px-2" style={{ backgroundColor: 'rgb(255, 219, 185)', width: 'fit-content' }}>
+                            <span className="p-1 rounded-circle me-1 " style={{ backgroundColor: 'rgb(228, 130, 75)' }}></span>
+                            <span>{row}</span>
+                        </span> : ''
+            );
+        }
     },
     {
-        fieldKey: 'deletebtn',
-        lebal: '',
-        btnclass: 'p-0 border-0 ms-2 rounded-1',
-        customfield: () => {
-            return ( <button className='p-0 border-0 rounded-1'><img src='report_download_icon.svg' alt='download_icon' /></button>
-                
+
+        customfield: (row) => {
+            return (
+                <div className='d-flex justify-content-end me-2'>                    
+                    <button className='p-0 border-0 rounded-1' onClick={() => console.log("rowdata", row)}><img src='delete_icon.svg' alt='download_icon' /></button>
+                </div>
+            )
+        }
+    },
+    {
+
+        customfield: (row) => {
+            return (
+                <div className='d-flex justify-content-end me-2'>
+                    <button className='p-0 border-0 rounded-1 me-2' onClick={() => console.log("rowdata", row)}><img src='Edit-button.svg' alt='download_icon' /></button>
+                    <button className='p-0 border-0 rounded-1' onClick={() => console.log("rowdata", row)}><img src='report_download_icon.svg' alt='download_icon' /></button>
+                </div>
             )
         }
     }
