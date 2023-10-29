@@ -4,11 +4,53 @@ import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import { Link } from "react-router-dom";
 import Appdata from "../Appdata";
-import Table from 'react-bootstrap/Table';
-import Paginationshow from '../Dashboard/Paginationshow';
+import Tables from '../Dashboard/Tables';
 
 const B2cPricingMaster = () => {
     const { b2cPricingMaster } = Appdata;
+    const b2cpricingmastercolumns = [        
+        {
+            tdClass: 'ps-3',
+            valueTdClass: 'ps-3',
+            fieldKey: 'category_name',
+            label: 'Category Name',
+            enableCheck: true,
+            customfield: (row) => {
+                return (
+                    <div className="d-flex">
+                        <input className="form-check-input me-3 g-0" type="checkbox" value=""></input>
+                        {row.label && <p className="mb-0">{row.label}</p>}
+                        {row.category_name && <p className="mb-0">{row.category_name}</p>}
+                    </div>
+                );
+            },
+        },
+        {
+            fieldKey: 'discount',
+            label: 'Discount',
+        },
+        {
+            fieldKey: 'status',
+            label: 'Status',
+            customfield: (row) => {
+                return (
+                    <Form>
+                        <Form.Check type="switch" />
+                    </Form>
+                );
+            }
+        },
+        {
+            valueTdClass: '',
+            customfield: (row) => {
+                return (
+                    <div className='d-flex justify-content-end me-2'>
+                        <button className='p-0 border-0 rounded-1' onClick={() => console.log("rowdata", row)}><img src='Edit-button.svg' alt='edit_icon' /></button>
+                    </div>
+                )
+            }
+        },
+    ];
     return (
         <div>
             <div className="vh-100 w-auto" >
@@ -16,10 +58,10 @@ const B2cPricingMaster = () => {
                     <div className="col my-4 p-0 d-flex justify-content-between">
                         <div className="d-flex align-items-center">
                             <Link to="/" className="me-3"><img src="./home_breadcrumb.svg" alt="home_breadcrumb-icon" /></Link>
-                            <span className="text-secondary">B2C Pricing Master</span>
+                            <span style={{ color: 'rgb(85 86 166)' }}>B2C Pricing Master</span>
                         </div>
-                        <div>                            
-                            <button className="btn btn-primary px-3">+ Add</button>
+                        <div>
+                            <button className="btn text-white px-3" style={{ backgroundColor: 'rgb(85 86 166)' }}>+ Add</button>
                         </div>
                     </div>
                     <div className="row shadow-sm  gx-0 rounded-1" style={{ background: "#fff" }}>
@@ -40,72 +82,13 @@ const B2cPricingMaster = () => {
                                     </Form.Select>
                                 </InputGroup>
                             </div>
-                            <div className="col-4 text-end">
+                            <div className="col-4 text-end mb-2">
                                 <ButtonGroup >
                                     <Button className="btn text-secondary bg-white border-secondary px-3"><img src="sortIcon.svg" alt="sort_icon" className="me-1 " />Sort by</Button>
                                 </ButtonGroup>
                             </div>
-                        </div>
-                        <div className="mt-2">
-
-                            <Table responsive>
-                                <thead style={{ background: '#ebeef0' }}>
-                                    <tr className="">
-                                        <th style={{width:'40px'}}>
-                                            <div className='d-flex justify-content-end mb-1'>
-                                                <input className="form-check-input " type="checkbox" value=""></input>
-                                            </div>
-                                        </th>
-
-                                        {
-                                            Object.keys(b2cPricingMaster[0]).map((d, i) => {
-                                                return (
-                                                    <td className="text-capitalize">{d.replace(/_/g, ' ')}</td>
-                                                );
-                                            })
-                                        }
-                                        <td>Status</td>
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody style={{ borderStyle: 'none' }}>
-                                    {
-                                        b2cPricingMaster.map((data, i) => {
-                                            return (
-                                                <tr>
-                                                    <td style={{width:'40px'}}>
-                                                        <div className='d-flex justify-content-end'>
-                                                            <input className="form-check-input " type="checkbox" value=""></input>
-                                                        </div>
-                                                    </td>
-
-                                                    {
-                                                        Object.keys(b2cPricingMaster[0]).map((d, i) => {
-
-                                                            return (
-                                                                <td>{data[d]}</td>
-                                                            );
-                                                        })}
-                                                    <td>
-                                                        <Form>
-                                                            <Form.Check 
-                                                                type="switch"                                                               
-                                                            />                                                       
-                                                        </Form>
-                                                    </td>
-                                                    <td>
-                                                        <div className='d-flex justify-content-end me-2'>
-                                                            <button className='p-0 border-0 rounded-1'><img src='Edit-button.svg' alt='editbutton' /></button>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            )
-                                        })
-                                    }
-                                </tbody>
-                            </Table>
-                        </div>
-                        <Paginationshow />
+                        </div>                       
+                        <Tables data={b2cPricingMaster} datacolumn={b2cpricingmastercolumns} />
                     </div>
                 </div>
             </div>

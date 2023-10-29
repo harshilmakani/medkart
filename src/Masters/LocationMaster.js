@@ -4,11 +4,73 @@ import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import { Link } from "react-router-dom";
 import Appdata from "../Appdata";
-import Table from 'react-bootstrap/Table';
-import Paginationshow from '../Dashboard/Paginationshow';
+import Tables from '../Dashboard/Tables';
 
 const LocationMaster = () => {
     const { locationmaster } = Appdata;
+
+    const locationmasterColumns = [
+
+        {
+            tdClass: 'ps-3',
+            valueTdClass: 'ps-3',
+            fieldKey: 'product_code',
+            label: 'Product Code',
+            enableCheck: true,
+            customfield: (row) => {
+                return (
+                    <div className="d-flex">
+                        <input className="form-check-input me-3 g-0" type="checkbox" value=""></input>
+                        {row.label && <p className="mb-0">{row.label}</p>}
+                        {row.product_code && <p className="mb-0">{row.product_code}</p>}
+                    </div>
+                );
+            },
+        },
+        {
+            fieldKey: 'wondersoft_code',
+            label: 'Wondersoft Code',
+        },
+        {
+            fieldKey: 'product_name',
+            label: 'Product Name',
+        },
+        {
+            fieldKey: 'warehouse_code',
+            label: 'Warehouse Code',
+        },
+        {
+            fieldKey: 'section',
+            label: 'Section',
+        },
+        {
+            fieldKey: 'lane',
+            label: 'Lane',
+        },
+        {
+            fieldKey: 'rack',
+            label: 'Reck',
+        },
+        {
+            fieldKey: 'shelf',
+            label: 'Shelf',
+        },
+        {
+            fieldKey: 'box',
+            label: 'Box',
+        },
+        {
+            valueTdClass: 'ps-4',
+            customfield: (row) => {
+                return (
+                    <div className='d-flex justify-content-end me-2'>
+                        <button className='p-0 border-0 rounded-1' onClick={() => console.log("rowdata", row)}><img src='Edit-button.svg' alt='edit_icon' /></button>
+                    </div>
+                )
+            }
+        },
+    ];
+    
     return (
         <div>
             <div className="vh-100 w-auto" >
@@ -16,12 +78,12 @@ const LocationMaster = () => {
                     <div className="col my-4 p-0 d-flex justify-content-between">
                         <div className="d-flex align-items-center">
                             <Link to="/" className="me-3"><img src="./home_breadcrumb.svg" alt="home_breadcrumb-icon" /></Link>
-                            <span className="text-secondary">Location Master</span>
+                            <span style={{ color: 'rgb(85 86 166)' }}>Location Master</span>
                         </div>
                         <div>
                             <button className='btn btn-outline-danger me-3'>Clear All values</button>
                             <button className='btn btn-outline-primary me-3'>Import</button>
-                            <button className="btn btn-primary px-3">+ Add</button>
+                            <button className="btn text-white px-3" style={{ backgroundColor: 'rgb(85 86 166)' }}>+ Add</button>
                         </div>
                     </div>
                     <div className="row shadow-sm  gx-0 rounded-1" style={{ background: "#fff" }}>
@@ -40,65 +102,14 @@ const LocationMaster = () => {
                                     </Form.Select>
                                 </InputGroup>
                             </div>
-                            <div className="col-4 text-end">
+                            <div className="col-4 text-end mb-2">
                                 <ButtonGroup >
                                     <Button className="btn text-secondary bg-white border-secondary px-4"><img src="filterIcon.svg" alt="filter_icon" className="me-1" />Filter</Button>
                                     <Button className="btn text-secondary bg-white border-secondary px-3"><img src="sortIcon.svg" alt="sort_icon" className="me-1 " />Sort by</Button>
                                 </ButtonGroup>
                             </div>
                         </div>
-                        <div className="mt-2">
-
-                            <Table responsive>
-                                <thead style={{ background: '#ebeef0' }}>
-                                    <tr className="">
-                                        <th>
-                                            <div className='d-flex justify-content-end mb-1'>
-                                                <input className="form-check-input " type="checkbox" value=""></input>
-                                            </div>
-                                        </th>
-
-                                        {
-                                            Object.keys(locationmaster[0]).map((d, i) => {
-                                                return (
-                                                    <td className="text-capitalize">{d.replace(/_/g, ' ')}</td>
-                                                );
-                                            })
-                                        }
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody style={{ borderStyle: 'none' }}>
-                                    {
-                                        locationmaster.map((data, i) => {
-                                            return (
-                                                <tr>
-                                                    <td>
-                                                        <div className='d-flex justify-content-end'>
-                                                            <input className="form-check-input " type="checkbox" value=""></input>
-                                                        </div>
-                                                    </td>
-
-                                                    {
-                                                        Object.keys(locationmaster[0]).map((d, i) => {
-
-                                                            return (
-                                                                <td>{data[d]}</td>
-                                                            );
-                                                        })}
-                                                        <td>
-                                                            <div className='d-flex justify-content-end me-2'>
-                                                                <button className='p-0 border-0 rounded-1'><img src='Edit-button.svg' alt='editbutton'/></button>
-                                                            </div>
-                                                        </td>
-                                                </tr>
-                                            )
-                                        })
-                                    }
-                                </tbody>
-                            </Table>
-                        </div>
-                        <Paginationshow/>
+                        <Tables data={locationmaster} datacolumn={locationmasterColumns} />
                     </div>
                 </div>
             </div>

@@ -4,11 +4,65 @@ import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import { Link } from "react-router-dom";
 import Appdata from "../Appdata";
-import Table from 'react-bootstrap/Table';
-import Paginationshow from "../Dashboard/Paginationshow";
+import Tables from "../Dashboard/Tables";
 
 const ProductMaster = () => {
     const { unpublished } = Appdata;
+
+    const unpublishedColumns = [
+
+        {
+            fieldKey: 'product_code',
+            label: 'Product Code',
+            tdClass: 'ps-3',
+            valueTdClass: 'ps-3',
+        },
+        {
+            fieldKey: 'wondersoft_code',
+            label: 'Wondersoft Code',
+        },
+        {
+            fieldKey: 'product_name',
+            label: 'Product Name',
+        },
+        {
+            fieldKey: 'manufacturer',
+            label: 'Manufacturer',
+        },
+        {
+            fieldKey: 'combination',
+            label: 'Combination',
+        },
+        {
+            fieldKey: 'status',
+            label: 'Status',
+            customfield: (row) => {
+                return (
+                    row === "Published" ?
+                        <span className="d-flex align-items-center justify-content-center rounded-pill px-2" style={{ backgroundColor: 'rgb(186, 240, 218)', width: 'fit-content' }}>
+                            <span className="p-1 rounded-circle me-1 " style={{ backgroundColor: 'rgb(0, 127, 95)' }}></span>
+                            <span>{row}</span>
+                        </span> : row === "Unpublished" ?
+                            <span className="d-flex align-items-center justify-content-center rounded-pill px-2" style={{ backgroundColor: 'rgb(255, 219, 185)', width: 'fit-content' }}>
+                                <span className="p-1 rounded-circle me-1 " style={{ backgroundColor: 'rgb(228, 130, 75)' }}></span>
+                                <span>{row}</span>
+                            </span> : ''
+                );
+            }
+        },
+        {
+            tdClass: '',
+            valueTdClass: 'ps-5',
+            customfield: (row) => {
+                return (
+                    <div className='d-flex justify-content-end me-2'>
+                        <button className='p-0 border-0 rounded-1 me-2' onClick={() => console.log("rowdata", row)}><img src='Edit-button.svg' alt='edit_icon' /></button>
+                        <button className='p-0 border-0 rounded-1' onClick={() => console.log("rowdata", row)}><img src='copy-button.svg' alt='copy_icon' /></button>
+                    </div>
+                )
+            }
+        },
+    ];
     return (
         <div>
             <div className="vh-100 w-auto" >
@@ -16,9 +70,9 @@ const ProductMaster = () => {
                     <div className="col my-4 p-0 d-flex justify-content-between">
                         <div className="d-flex align-items-center">
                             <Link to="/" className="me-3"><img src="./home_breadcrumb.svg" alt="home_breadcrumb-icon" /></Link>
-                            <span className="text-secondary">Product Master</span>
+                            <span style={{ color: 'rgb(85 86 166)'}}>Product Master</span>
                         </div>
-                        <div><button className="btn btn-primary px-3">+ Add</button></div>
+                        <div><button className="btn text-white px-3" style={{ backgroundColor: 'rgb(85 86 166)' }}>+ Add</button></div>
                     </div>
                     <div className="row shadow-sm  gx-0 rounded-1" style={{ background: "#fff" }}>
                         <div className="col d-flex  align-items-center py-1  border-bottom">
@@ -47,55 +101,8 @@ const ProductMaster = () => {
                                     <Button className="btn text-secondary bg-white border-secondary px-3"><img src="sortIcon.svg" alt="sort_icon" className="me-1 " />Sort by</Button>
                                 </ButtonGroup>
                             </div>
-                        </div>
-                        <div className="p-0">
-
-                            <Table responsive>
-                                <thead  style={{ background: '#ebeef0' }}>
-                                    <tr>
-                                        {
-                                            Object.keys(unpublished[0]).map((d, i) => {
-                                                return (
-                                                    <td className="text-capitalize">{d.replace(/_/g, ' ')}</td>
-                                                );
-                                            })
-                                        }
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody style={{ borderStyle: 'none'}}>
-                                    {
-                                        unpublished.map((data, i) => {
-                                            return (
-                                                <tr>{
-                                                    Object.keys(unpublished[0]).map((d, i) => {
-                                                        console.log(d);
-                                                        return (
-                                                            <td>{data[d] === "Published" ?
-                                                                <span className="d-flex align-items-center justify-content-center rounded-pill px-2" style={{ backgroundColor: 'rgb(186, 240, 218)', width: 'fit-content' }}>
-                                                                    <span className="p-1 rounded-circle me-1 " style={{ backgroundColor: 'rgb(0, 127, 95)' }}></span>
-                                                                    <span>Published</span>
-                                                                </span> : data[d] === "Unpublished" ?
-                                                                    <span className="d-flex align-items-center justify-content-center rounded-pill px-2" style={{ backgroundColor: 'rgb(255, 219, 185)', width: 'fit-content' }}>
-                                                                        <span className="p-1 rounded-circle me-1 " style={{ backgroundColor: 'rgb(228, 130, 75)' }}></span>
-                                                                        <span>Unpublished</span>
-                                                                    </span> : data[d]}</td>
-                                                        );
-                                                    })}
-                                                    <td className="ps-5">
-                                                        <div className='d-flex justify-content-end me-2'>
-                                                            <button className='p-0 border-0 me-2 rounded-1'><img src='Edit-button.svg' alt='editbutton' /></button>
-                                                            <button className='p-0 border-0 rounded-1'><img src='copy-button.svg' alt='copybutton' /></button>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            )
-                                        })
-                                    }
-                                </tbody>
-                            </Table>
-                        </div>
-                        <Paginationshow/>
+                        </div>                       
+                        <Tables data={unpublished} datacolumn={unpublishedColumns} />
                     </div>
                 </div>
             </div>

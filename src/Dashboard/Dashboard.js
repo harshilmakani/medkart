@@ -76,7 +76,7 @@ const Dashboard = () => {
                     {/* <Route exact path='/payments' element={<Payments/>}/> */}
 
                 </Routes>                 
-                <Pages/>
+                {/* <Pages/> */}
         </div>
     );
 }

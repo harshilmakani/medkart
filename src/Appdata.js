@@ -603,42 +603,52 @@ const b2cPricingMaster = [
     {
         category_name: 'Disc 30 Perc',
         discount: '30%',
+        status:'',
     },
     {
         category_name: 'Launch Category',
         discount: '30%',
+        status:'',
     },
     {
         category_name: 'Disc 25 Perc',
         discount: '25%',
+        status:'',
     },
     {
         category_name: 'Disc 20 Perc',
         discount: '20%',
+        status:'',
     },
     {
         category_name: 'Disc 15 Perc',
         discount: '15%',
+        status:'',
     },
     {
         category_name: 'Disc 10 Perc',
         discount: '10%',
+        status:'',
     },
     {
         category_name: 'Disc 5 Perc',
         discount: '5%',
+        status:'',
     },
     {
         category_name: 'Disc 0 Perc',
         discount: '0%',
+        status:'',
     },
     {
         category_name: 'Disc 40 Perc',
         discount: '40%',
+        status:'',
     },
     {
         category_name: 'Disc 35 Perc',
         discount: '35%',
+        status:'',
     },
 ];
 
