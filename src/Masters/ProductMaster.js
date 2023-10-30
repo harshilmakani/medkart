@@ -46,7 +46,7 @@ const ProductMaster = () => {
                             <span className="d-flex align-items-center justify-content-center rounded-pill px-2" style={{ backgroundColor: 'rgb(255, 219, 185)', width: 'fit-content' }}>
                                 <span className="p-1 rounded-circle me-1 " style={{ backgroundColor: 'rgb(228, 130, 75)' }}></span>
                                 <span>{row}</span>
-                            </span> : ''
+                            </span> : row
                 );
             }
         },

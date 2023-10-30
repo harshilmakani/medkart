@@ -6,9 +6,63 @@ import { Link } from "react-router-dom";
 import Appdata from "../Appdata";
 import Table from 'react-bootstrap/Table';
 import Paginationshow from '../Dashboard/Paginationshow';
+import Tables from '../Dashboard/Tables';
 
 const PurchaseInvoice = () => {
     const { purchaseinvoice } = Appdata;
+    const purchaseinvoiceColumns = [        
+        {
+            tdClass: 'ps-3',
+            valueTdClass: 'ps-3',
+            fieldKey: 'invoice_date',
+            label: 'Invoice Date',
+        },
+        {
+            fieldKey: 'PI_no',
+            label: 'PI No',
+        },
+        {
+            fieldKey: 'invoice_no',
+            label: 'Invoice No',
+        },
+        {
+            fieldKey: 'GRN_no',
+            label: 'GRN No',           
+        },
+        {
+            fieldKey: 'vendor_name',
+            label: 'Vendor Name',
+            valueTdClass: 'textcolor',
+        },
+        {
+            fieldKey: 'total_products',
+            label: 'Total Products',
+            tdClass: 'text-end',
+            valueTdClass: 'text-end',
+        },
+        {
+            fieldKey: 'total_qty',
+            label: 'Total Qty',
+            tdClass: 'text-end',
+            valueTdClass: 'text-end',
+        },
+        {
+            fieldKey: 'total_amount',
+            label: 'Total Amount',
+            tdClass: 'text-end',
+            valueTdClass: 'text-end',
+        }, 
+        {
+            valueTdClass: '',
+            customfield: (row) => {
+                return (                    
+                    <div className='d-flex justify-content-end me-2'>
+                        <button className='p-0 border-0 rounded-1' onClick={() => console.log("rowdata", row)} ><img src='Retry.svg' alt='retry_icon' /></button>
+                    </div>
+                )
+            }
+        },       
+    ];
     return (
         <div>
             <div className="vh-100 w-auto" >
@@ -36,14 +90,14 @@ const PurchaseInvoice = () => {
                                     </Form.Select>
                                 </InputGroup>
                             </div>
-                            <div className="col-4 text-end">
+                            <div className="col-4 text-end mb-2">
                                 <ButtonGroup >
                                     <Button className="btn text-secondary bg-white border-secondary px-4"><img src="filterIcon.svg" alt="filter_icon" className="me-1" />Filter</Button>
                                     <Button className="btn text-secondary bg-white border-secondary px-3"><img src="sortIcon.svg" alt="sort_icon" className="me-1 " />Sort by</Button>
                                 </ButtonGroup>
                             </div>
                         </div>
-                        <div className="mt-2">
+                        {/* <div className="mt-2">
 
                             <Table responsive>
                                 <thead style={{ background: '#ebeef0' }}>
@@ -86,7 +140,8 @@ const PurchaseInvoice = () => {
                                 </tbody>
                             </Table>
                         </div>
-                        <Paginationshow />
+                        <Paginationshow /> */}
+                        <Tables data={purchaseinvoice} datacolumn={purchaseinvoiceColumns} />
                     </div>
                 </div>
             </div>

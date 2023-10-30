@@ -4,11 +4,64 @@ import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import { Link } from "react-router-dom";
 import Appdata from "../Appdata";
-import Table from 'react-bootstrap/Table';
-import Paginationshow from "../Dashboard/Paginationshow";
+import Tables from "../Dashboard/Tables";
 
 const Payments = () => {
     const { payments } = Appdata;
+    const paymentsColumns = [        
+        {
+            tdClass: 'ps-3',
+            valueTdClass: 'ps-3',
+            fieldKey: 'date',
+            label: 'Date',
+        },
+        {
+            fieldKey: 'payment_no',
+            label: 'Payment No',
+            valueTdClass: 'textcolor',
+        },               
+        {
+            fieldKey: 'type',
+            label: 'Type',
+        },
+        {
+            fieldKey: 'opposite_account',
+            label: 'Opposite Account',
+        },
+        {
+            fieldKey: 'created_by',
+            label: 'Created By',
+        },
+        {
+            fieldKey: 'payment_mode',
+            label: 'Payment Mode',
+        },
+        {
+            fieldKey: 'amount',
+            label: 'Amount',
+            tdClass: 'text-end',
+            valueTdClass: 'text-end',
+        },
+        {            
+            customfield: (row) => {
+                return (
+                    <div className='d-flex justify-content-end me-2'>
+                        <button className='p-0 border-0 rounded-1' onClick={() => console.log("rowdata", row)} ><img src='Retry.svg' alt='retry_icon' /></button>                        
+                    </div>                
+                )
+            }
+        },
+        {           
+            customfield: (row) => {
+                return (
+                    <div className='d-flex justify-content-end me-2'>
+                        {row.type === 'Vendor Payment' ? <button className='p-0 border-0 rounded-1 me-2' onClick={() => console.log("rowdata", row)} ><img src='Edit-button.svg' alt='edit_icon' /></button> : ''}                        
+                        <button className='p-0 border-0 rounded-1' onClick={() => console.log("rowdata", row)} ><img src='delete_icon.svg' alt='delete_icon' /></button>
+                    </div>                
+                )
+            }
+        },
+    ];
     return (
         <div>
             <div className="vh-100 w-auto" >
@@ -16,9 +69,9 @@ const Payments = () => {
                     <div className="col my-4 p-0 d-flex justify-content-between">
                         <div className="d-flex align-items-center">
                             <Link to="/" className="me-3"><img src="./home_breadcrumb.svg" alt="home_breadcrumb-icon" /></Link>
-                            <span className="text-secondary">Payments</span>
+                            <span style={{ color: 'rgb(85 86 166)' }}>Payments</span>
                         </div>
-                        <div><button className="btn btn-primary px-3">Add Payments</button></div>
+                        <div><button className="btn text-white px-3" style={{ backgroundColor: 'rgb(85 86 166)' }}>Add Payments</button></div>
                     </div>
                     <div className="row shadow-sm p-0 gx-0 rounded-1" style={{ background: "#fff" }}>
 
@@ -41,57 +94,8 @@ const Payments = () => {
                                     <Button className="btn text-secondary bg-white border-secondary px-3"><img src="sortIcon.svg" alt="sort_icon" className="me-1 " />Sort by</Button>
                                 </ButtonGroup>
                             </div>
-                        </div>
-                        <div className="p-0">
-
-                            <Table responsive>
-                                <thead style={{ background: '#ebeef0' }}>
-                                    <tr className="">
-                                        {
-                                            Object.keys(payments[0]).map((d, i) => {
-                                                return (
-                                                    <td className="text-capitalize">{d === 'amount' ? <div className="text-end">{d.replace(/_/g, ' ')}</div> : d.replace(/_/g, ' ')}</td>
-                                                );
-                                            })
-                                        }
-                                        <th></th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody style={{ borderStyle: 'none' }}>
-                                    {
-                                        payments.map((data, i) => {
-                                            return (
-                                                <tr>
-                                                    {
-                                                        Object.keys(payments[0]).map((d, i) => {
-
-                                                            return (
-                                                                <td>{ d === 'amount' ? <div className="text-end">{data[d]}</div> :
-                                                                    d === "payment_no" ? <span style={{ color: 'rgb(85 86 166)' }}>{data[d]}</span>
-                                                                        : data[d]
-                                                                }
-                                                                </td>
-                                                            );
-                                                        })}
-                                                    <td>
-                                                        <div className='d-flex justify-content-end'>                                                            
-                                                            <button className='p-0 border-0 rounded-1'><img src='Retry.svg' alt='retry_icon' /></button>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div className='d-flex justify-content-end me-2'>                                                            
-                                                            <button className='p-0 border-0 rounded-1'><img src='delete_icon.svg' alt='delete_icon' /></button>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            )
-                                        })
-                                    }
-                                </tbody>
-                            </Table>
-                        </div>
-                        <Paginationshow />
+                        </div>                        
+                        <Tables data={payments} datacolumn={paymentsColumns} />
                     </div>
                 </div>
             </div>

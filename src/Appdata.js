@@ -1584,7 +1584,7 @@ const checkingtracker = [
         start_time: '12:00 AM',
         end_time: '01:00 AM',
         checker_name: 'Pratibha T',
-        status: 'UnPaid',
+        status: 'Uncomplet',
     },
 ];
 
@@ -2153,7 +2153,7 @@ const payments = [
     {
         date: '19-07-2023',
         payment_no: 'PT101001030',
-        type: 'Vendor Refund',
+        type: 'Vendor Payment',
         opposite_account: 'CURE PHARMACY',
         created_by: 'Harshil Patel (19-07-2023 2:53 PM)',
         payment_mode: 'QR Code',
@@ -2162,7 +2162,7 @@ const payments = [
     {
         date: '19-07-2023',
         payment_no: 'PT101001020',
-        type: 'Vendor Refund',
+        type: 'Vendor Payment',
         opposite_account: 'CURE PHARMACY',
         created_by: 'Hiren Patel (18-07-2023 2:53 PM)',
         payment_mode: 'QR Code',
@@ -2171,7 +2171,7 @@ const payments = [
     {
         date: '19-07-2023',
         payment_no: 'PT101001010',
-        type: 'Vendor Refund',
+        type: 'Vendor Payment',
         opposite_account: 'pankaj kumar pandya',
         created_by: 'Hiren Patel (18-07-2023 2:53 PM)',
         payment_mode: 'Net Banking',
@@ -2180,7 +2180,7 @@ const payments = [
     {
         date: '19-07-2023',
         payment_no: 'PT101001456',
-        type: 'Vendor Refund',
+        type: 'Vendor Payment',
         opposite_account: 'SHREE HARI MEDICAL',
         created_by: 'Saurav Khodal (18-07-2023 2:53 PM)',
         payment_mode: 'Net Banking',

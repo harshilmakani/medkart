@@ -50,7 +50,7 @@ const Tables = (props) => {
                                           
                                             return (
                                                 <td key={index} className={`${d.valueTdClass}`}>{                                                     
-                                                    d.fieldKey === "status" ? d.customfield(data[d.fieldKey])
+                                                    d.fieldKey === "status" || d.fieldKey === 'payment_status' ? d.customfield(data[d.fieldKey])
                                                      : d.customfield ? d.customfield(data) : data?.[d?.fieldKey]
                                                         }                                                        
                                                 </td>

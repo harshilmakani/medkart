@@ -4,11 +4,48 @@ import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import { Link } from "react-router-dom";
 import Appdata from "../Appdata";
-import Table from 'react-bootstrap/Table';
-import Paginationshow from "../Dashboard/Paginationshow";
+import Tables from "../Dashboard/Tables";
 
 const BankMaster = () => {
     const { bankmaster } = Appdata;
+    const bankmasterColumns = [
+        {
+            tdClass: 'ps-3',
+            valueTdClass: 'ps-3',
+            fieldKey: 'account_type',
+            label: 'Account Type',
+        },
+        {
+            fieldKey: 'account_name',
+            label: 'Account Name',
+            valueTdClass: 'textcolor',
+        },
+        {
+            fieldKey: 'account_number',
+            label: 'Account Number',
+        },
+        {
+            fieldKey: 'bank_name',
+            label: 'Bank Name',
+        },
+        {
+            fieldKey: 'balance',
+            label: 'Balance',
+        },
+        {
+            valueTdClass: '',
+            customfield: (row) => {
+                return (
+                    <div className='d-flex justify-content-end me-2'>
+                        <button className='p-0 border-0 rounded-1 me-2' onClick={() => console.log("rowdata", row)} ><img src='Edit-button.svg' alt='edit_icon' /></button>
+                        <button className='p-0 border-0 rounded-1' onClick={() => console.log("rowdata", row)} ><img src='delete_icon.svg' alt='delete_icon' /></button>
+                    </div>
+                    
+                
+                )
+            }
+        },
+    ];
     return (
         <div>
             <div className="vh-100 w-auto" >
@@ -16,9 +53,9 @@ const BankMaster = () => {
                     <div className="col my-4 p-0 d-flex justify-content-between">
                         <div className="d-flex align-items-center">
                             <Link to="/" className="me-3"><img src="./home_breadcrumb.svg" alt="home_breadcrumb-icon" /></Link>
-                            <span className="text-secondary">Bank Master</span>
+                            <span style={{ color: 'rgb(85 86 166)' }}>Bank Master</span>
                         </div>
-                        <div><button className="btn btn-primary px-3">Add Bank Account</button></div>
+                        <div><button className="btn text-white px-3" style={{ backgroundColor: 'rgb(85 86 166)' }}>Add Bank Account</button></div>
                     </div>
                     <div className="row shadow-sm p-0 gx-0 rounded-1" style={{ background: "#fff" }}>
 
@@ -43,52 +80,8 @@ const BankMaster = () => {
                                     <Button className="btn text-secondary bg-white border-secondary px-3"><img src="sortIcon.svg" alt="sort_icon" className="me-1 " />Sort by</Button>
                                 </ButtonGroup>
                             </div>
-                        </div>
-                        <div className="p-0">
-
-                            <Table responsive>
-                                <thead style={{ background: '#ebeef0' }}>
-                                    <tr className="">
-                                        {
-                                            Object.keys(bankmaster[0]).map((d, i) => {
-                                                return (
-                                                    <td className="text-capitalize">{d.replace(/_/g, ' ')}</td>
-                                                );
-                                            })
-                                        }
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody style={{ borderStyle: 'none' }}>
-                                    {
-                                        bankmaster.map((data, i) => {
-                                            return (
-                                                <tr>
-                                                    {
-                                                        Object.keys(bankmaster[0]).map((d, i) => {
-
-                                                            return (
-                                                                <td>{
-                                                                    d === "account_name" ? <span style={{ color: 'rgb(85 86 166)' }}>{data[d]}</span>
-                                                                        : data[d]
-                                                                    }
-                                                                </td>
-                                                            );
-                                                        })}
-                                                    <td>
-                                                        <div className='d-flex justify-content-end me-2'>
-                                                            <button className='p-0 border-0 rounded-1 me-2'><img src='Edit-button.svg' alt='editbutton' /></button>
-                                                            <button className='p-0 border-0 rounded-1'><img src='delete_icon.svg' alt='delete_icon' /></button>
-                                                        </div>
-                                                    </td>                                                    
-                                                </tr>
-                                            )
-                                        })
-                                    }
-                                </tbody>
-                            </Table>
-                        </div>
-                        <Paginationshow />
+                        </div>                        
+                        <Tables data={bankmaster} datacolumn={bankmasterColumns} />
                     </div>
                 </div>
             </div>

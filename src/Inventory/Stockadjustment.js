@@ -4,11 +4,65 @@ import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import { Link } from "react-router-dom";
 import Appdata from "../Appdata";
-import Table from 'react-bootstrap/Table';
-import Paginationshow from '../Dashboard/Paginationshow';
+import Tables from '../Dashboard/Tables';
 
 const Stockadjustment = () => {
     const { stockadjustment } = Appdata;
+    const stockadjustmentColumns = [        
+        {
+            tdClass: 'ps-3',
+            valueTdClass: 'ps-3 textcolor',
+            fieldKey: 'adj_no',
+            label: 'Adj No',
+        },
+        {
+            fieldKey: 'date',
+            label: 'Date',
+        },
+        {
+            fieldKey: 'type',
+            label: 'Type',
+        },
+        {
+            fieldKey: 'total_items',
+            label: 'Total Items',
+            tdClass: 'text-end',
+            valueTdClass: 'text-end',
+        },
+        {
+            fieldKey: 'total_adjusted_qty',
+            label: 'Total Adjusted Qty',
+            tdClass: 'text-end',
+            valueTdClass: 'text-end',
+        },
+        {
+            fieldKey: 'created_by',
+            label: 'Created By',
+            tdClass: 'ps-3',
+            valueTdClass: 'ps-3',
+        },
+        {
+            fieldKey: 'approved_by_rejected_by',
+            label: 'Approved By/Rejected By',
+        },
+        {
+            fieldKey: 'status',
+            label: 'Status',
+            customfield: (row) => {
+                return (
+                    row === "Approved" ?
+                        <span className="d-flex align-items-center justify-content-center rounded-pill px-2" style={{ backgroundColor: 'rgb(186, 240, 218)', width: 'fit-content' }}>
+                            <span className="p-1 rounded-circle me-1 " style={{ backgroundColor: 'rgb(0, 127, 95)' }}></span>
+                            <span>{row}</span>
+                        </span> : row === "Draft" ?
+                            <span className="d-flex align-items-center justify-content-center rounded-pill px-2" style={{ backgroundColor: 'rgb(235, 238, 240)', width: 'fit-content' }}>
+                                <span className="p-1 rounded-circle me-1 " style={{ backgroundColor: 'rgb(192, 192, 192)' }}></span>
+                                <span>{row}</span>
+                            </span> : row
+                );
+            } 
+        },
+    ];
     return (
         <div>
             <div className="vh-100 w-auto" >
@@ -37,58 +91,14 @@ const Stockadjustment = () => {
                                     </Form.Select>
                                 </InputGroup>
                             </div>
-                            <div className="col-4 text-end">
+                            <div className="col-4 text-end mb-2">
                                 <ButtonGroup >
                                     <Button className="btn text-secondary bg-white border-secondary px-4"><img src="filterIcon.svg" alt="filter_icon" className="me-1" />Filter</Button>
                                     <Button className="btn text-secondary bg-white border-secondary px-3"><img src="sortIcon.svg" alt="sort_icon" className="me-1 " />Sort by</Button>
                                 </ButtonGroup>
                             </div>
-                        </div>
-                        <div className="mt-2">
-
-                            <Table responsive>
-                                <thead style={{ background: '#ebeef0' }}>
-                                    <tr>
-                                        {
-                                            Object.keys(stockadjustment[0]).map((d, i) => {
-                                                return (
-                                                    <td className="text-capitalize">{d === 'total_items' || d === 'total_adjusted_qty' ? <div className='text-end'>{d.replace(/_/g, ' ')}</div> : d.replace(/_/g, ' ')}</td>
-                                                );
-                                            })
-                                        }
-                                    </tr>
-                                </thead>
-                                <tbody style={{ borderStyle: 'none' }}>
-                                    {
-                                        stockadjustment.map((data, i) => {
-                                            return (
-                                                <tr>
-                                                    {
-                                                        Object.keys(stockadjustment[0]).map((d, i) => {
-
-                                                            return (
-                                                                <td>{d === "total_items" || d === "total_adjusted_qty" ? <div className='text-end'>{data[d]}</div>
-                                                                    : d === "adj_no" ? <span style={{ color: 'rgb(85 86 166)' }}>{data[d]}</span>
-                                                                        : data[d] === "Approved" ?
-                                                                            <span className="d-flex align-items-center justify-content-center rounded-pill px-2" style={{ backgroundColor: 'rgb(186, 240, 218)', width: 'fit-content' }}>
-                                                                                <span className="p-1 rounded-circle me-1 " style={{ backgroundColor: 'rgb(0, 127, 95)' }}></span>
-                                                                                <span>Published</span>
-                                                                            </span> : data[d] === "Draft" ?
-                                                                                <span className="d-flex align-items-center justify-content-center rounded-pill px-2" style={{ backgroundColor: 'rgb(235, 238, 240)', width: 'fit-content' }}>
-                                                                                    <span className="p-1 rounded-circle me-1 " style={{ backgroundColor: 'rgb(192, 192, 192)' }}></span>
-                                                                                    <span>Draft</span>
-                                                                                </span> : data[d]
-                                                                }</td>
-                                                            );
-                                                        })}
-                                                </tr>
-                                            )
-                                        })
-                                    }
-                                </tbody>
-                            </Table>
-                        </div>
-                        <Paginationshow />
+                        </div>                        
+                        <Tables data={stockadjustment} datacolumn={stockadjustmentColumns}/>
                     </div>
                 </div>
             </div>

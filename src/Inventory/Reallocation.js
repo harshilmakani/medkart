@@ -4,11 +4,65 @@ import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import { Link } from "react-router-dom";
 import Appdata from "../Appdata";
-import Table from 'react-bootstrap/Table';
-import Paginationshow from '../Dashboard/Paginationshow';
+import Tables from '../Dashboard/Tables';
 
 const Reallocation = () => {
     const { reallocation } = Appdata;
+    const reallocationColumns = [        
+        {
+            tdClass: 'ps-3',
+            valueTdClass: 'ps-3',
+            fieldKey: 'file_name',
+            label: 'File Name',
+        },
+        {
+            fieldKey: 'upload_by',
+            label: 'Upload by (data & time)',
+        },
+        {
+            fieldKey: 'no_of_records',
+            label: 'No of records',
+        },
+        {
+            fieldKey: 'total_qty_ordered',
+            label: 'Totel Qty Ordered',
+        },
+        {
+            fieldKey: 'total_qty_fulfiled',
+            label: 'Total Qty Fulfiled',
+        },
+        {
+            fieldKey: 'PN_generated_time',
+            label: 'PN Generated Time',
+        },
+        {
+            fieldKey: 'status',
+            label: '',
+            customfield: (row) => {
+                return (
+                    row === "Processed" ?
+                        <span className="d-flex align-items-center justify-content-center rounded-pill px-2" style={{ backgroundColor: 'rgb(186, 240, 218)', width: 'fit-content' }}>
+                            <span className="p-1 rounded-circle me-1 " style={{ backgroundColor: 'rgb(0, 127, 95)' }}></span>
+                            <span>{row}</span>
+                        </span> : row === "Unpublished" ?
+                            <span className="d-flex align-items-center justify-content-center rounded-pill px-2" style={{ backgroundColor: 'rgb(255, 219, 185)', width: 'fit-content' }}>
+                                <span className="p-1 rounded-circle me-1 " style={{ backgroundColor: 'rgb(228, 130, 75)' }}></span>
+                                <span>{row}</span>
+                            </span> : row
+                );
+            }
+        },
+        {
+            valueTdClass: 'ps-4',
+            customfield: (row) => {
+                return (
+                    <div className='d-flex justify-content-end me-2'>
+                        <button className='p-0 border-0 rounded-1' onClick={() => console.log("rowdata", row)}><img src='report_download_icon.svg' alt='download_icon' /></button>
+                    </div>
+                )
+            }
+        },
+    ];
     return (
         <div>
             <div className="vh-100 w-auto" >
@@ -37,59 +91,14 @@ const Reallocation = () => {
                                     </Form.Select>
                                 </InputGroup>
                             </div>
-                            <div className="col-4 text-end">
+                            <div className="col-4 text-end mb-2">
                                 <ButtonGroup >
                                     <Button className="btn text-secondary bg-white border-secondary px-4"><img src="filterIcon.svg" alt="filter_icon" className="me-1" />Filter</Button>
                                     <Button className="btn text-secondary bg-white border-secondary px-3"><img src="sortIcon.svg" alt="sort_icon" className="me-1 " />Sort by</Button>
                                 </ButtonGroup>
                             </div>
-                        </div>
-                        <div className="mt-2">
-
-                            <Table responsive>
-                                <thead style={{ background: '#ebeef0' }}>
-                                    <tr>
-                                        {
-                                            Object.keys(reallocation[0]).map((d, i) => {
-                                                return (
-                                                    <td className="text-capitalize">{d === 'total_items' || d === 'total_adjusted_qty' ? <div className='text-end'>{d.replace(/_/g, ' ')}</div> : d.replace(/_/g, ' ')}</td>
-                                                );
-                                            })
-                                        }
-                                        <th>₹</th>
-                                    </tr>
-                                </thead>
-                                <tbody style={{ borderStyle: 'none' }}>
-                                    {
-                                        reallocation.map((data, i) => {
-                                            return (
-                                                <tr>
-                                                    {
-                                                        Object.keys(reallocation[0]).map((d, i) => {
-
-                                                            return (
-                                                                <td>{data[d] === "Processed" ?
-                                                                    <span className="d-flex align-items-center justify-content-center rounded-pill px-2" style={{ backgroundColor: 'rgb(186, 240, 218)', width: 'fit-content' }}>
-                                                                        <span className="p-1 rounded-circle me-1 " style={{ backgroundColor: 'rgb(0, 127, 95)' }}></span>
-                                                                        <span>Processed</span>
-                                                                    </span> : data[d]
-                                                                }
-                                                                </td>
-                                                            );
-                                                        })}
-                                                    <td>
-                                                        <div className='d-flex justify-content-end me-2'>
-                                                            <button className='p-0 border-0 rounded-1'><img src='report_download_icon.svg' alt='download_icon' /></button>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            )
-                                        })
-                                    }
-                                </tbody>
-                            </Table>
-                        </div>
-                        <Paginationshow />
+                        </div>                        
+                        <Tables data={reallocation} datacolumn={reallocationColumns}/>
                     </div>
                 </div>
             </div>

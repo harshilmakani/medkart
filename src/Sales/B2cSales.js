@@ -4,11 +4,110 @@ import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import { Link } from "react-router-dom";
 import Appdata from "../Appdata";
-import Table from 'react-bootstrap/Table';
-import Paginationshow from '../Dashboard/Paginationshow';
+import Tables from '../Dashboard/Tables';
 
 const B2cSales = () => {
     const { b2csales } = Appdata;
+    const b2csalesColumns = [        
+        {
+            tdClass: 'ps-3',
+            valueTdClass: 'ps-3',
+            fieldKey: 'date',
+            label: 'Date',
+        },
+        {
+            fieldKey: 'invoice_no',
+            label: 'Invoice No',
+        },
+        {
+            fieldKey: 'SO_no',
+            label: 'SO No.',
+        },
+        {
+            fieldKey: 'sales_ref_no',
+            label: 'Ssles Ref No',
+        },
+        {
+            fieldKey: 'pick_note',
+            label: 'Pick Note',
+        },
+        {
+            fieldKey: 'customer_name',
+            label: 'Customer Name',
+            valueTdClass: 'textcolor',
+        },
+        {
+            fieldKey: 'total_products',
+            label: 'Total Products',
+            tdClass: 'text-end',
+            valueTdClass: 'text-end',
+        },
+        {
+            fieldKey: 'total_qty',
+            label: 'Total Qty',
+            tdClass: 'text-end',
+            valueTdClass: 'text-end',
+        },
+        {
+            fieldKey: 'invoice_total',
+            label: 'Invoice Total',
+            tdClass: 'text-end',
+            valueTdClass: 'text-end',
+        },
+        {
+            fieldKey: 'due_amount',
+            label: 'Due Amount',
+            tdClass: 'text-end',
+            valueTdClass: 'text-end',
+        },
+        {
+            fieldKey: 'invoice_by',
+            label: 'Invoice By',
+            tdClass: 'ps-3',
+            valueTdClass: 'ps-3',
+        },
+        {
+            fieldKey: 'payment_status',
+            label: 'Payment Status',
+            customfield: (row) => {
+                return (
+                    row === "Fully Paid" ?
+                        <span className="d-flex align-items-center justify-content-center rounded-pill px-2" style={{ backgroundColor: 'rgb(186, 240, 218)', width: 'fit-content' }}>
+                            <span className="p-1 rounded-circle me-1 " style={{ backgroundColor: 'rgb(0, 127, 95)' }}></span>
+                            <span>{row}</span>
+                        </span> : row === "Partially Paid" ?
+                            <span className="d-flex align-items-center justify-content-center rounded-pill px-2" style={{ backgroundColor: 'rgb(255, 242, 185)', width: 'fit-content' }}>
+                                <span className="p-1 rounded-circle me-1 " style={{ backgroundColor: 'rgb(228, 174, 75)' }}></span>
+                                <span>{row}</span>
+                            </span> : row === "UnPaid" ?
+                                <span className="d-flex align-items-center justify-content-center rounded-pill px-2" style={{ backgroundColor: 'rgb(254, 211, 209)', width: 'fit-content' }}>
+                                    <span className="p-1 rounded-circle me-1 " style={{ backgroundColor: 'rgb(215, 44, 13)' }}></span>
+                                    <span>{row}</span>
+                                </span> : row
+                );
+            }
+        },
+        {
+            valueTdClass: '',
+            customfield: (row) => {
+                return (
+                    <div className='d-flex justify-content-end me-2'>
+                        <button className='p-0 border-0 rounded-1' onClick={() => console.log("rowdata", row)}><img src='Retry.svg' alt='retry_icon' /></button>
+                    </div>
+                )
+            }
+        },
+        {
+            valueTdClass: 'ps-3',
+            customfield: (row) => {
+                return (
+                    <div className='d-flex justify-content-end me-2'>
+                        <button className='btn btn-outline-secondary py-0 px-2' onClick={() => console.log("rowdata", row)}> Print</button>
+                    </div>
+                )
+            }
+        },
+    ];
     return (
         <div>
             <div className="vh-100 w-auto" >
@@ -37,75 +136,14 @@ const B2cSales = () => {
                                     </Form.Select>
                                 </InputGroup>
                             </div>
-                            <div className="col-4 text-end">
+                            <div className="col-4 text-end mb-2">
                                 <ButtonGroup >
                                     <Button className="btn text-secondary bg-white border-secondary px-4"><img src="filterIcon.svg" alt="filter_icon" className="me-1" />Filter</Button>
                                     <Button className="btn text-secondary bg-white border-secondary px-3"><img src="sortIcon.svg" alt="sort_icon" className="me-1 " />Sort by</Button>
                                 </ButtonGroup>
                             </div>
-                        </div>
-                        <div className="mt-2">
-
-                            <Table responsive>
-                                <thead style={{ background: '#ebeef0' }}>
-                                    <tr>
-                                        {
-                                            Object.keys(b2csales[0]).map((d, i) => {
-                                                return (
-                                                    <td className="text-capitalize">{d === 'total_products' || d === 'total_qty' || d === 'invoice_total' || d === 'due_amount' ? 
-                                                    <div className='text-end'>{d.replace(/_/g, ' ')}</div> : d.replace(/_/g, ' ')}</td>
-                                                );
-                                            })
-                                        }
-                                        <th></th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody style={{ borderStyle: 'none' }}>
-                                    {
-                                        b2csales.map((data, i) => {
-                                            return (
-                                                <tr>
-                                                    {
-                                                        Object.keys(b2csales[0]).map((d, i) => {
-
-                                                            return (
-                                                                <td>{d === "total_products" || d === "total_qty" || d === 'invoice_total' || d === 'due_amount' ? <div className='text-end'>{data[d]}</div>
-                                                                    : d === "customer_name" ? <span style={{ color: 'rgb(85 86 166)' }}>{data[d]}</span>
-                                                                        : data[d] === "Fully Paid" ?
-                                                                            <span className="d-flex align-items-center justify-content-center rounded-pill px-2" style={{ backgroundColor: 'rgb(186, 240, 218)', width: 'fit-content' }}>
-                                                                                <span className="p-1 rounded-circle me-1 " style={{ backgroundColor: 'rgb(0, 127, 95)' }}></span>
-                                                                                <span>Fully Paid</span>
-                                                                            </span> : data[d] === "Partially Paid" ?
-                                                                            <span className="d-flex align-items-center justify-content-center rounded-pill px-2" style={{ backgroundColor: 'rgb(255, 242, 185)', width: 'fit-content' }}>
-                                                                                <span className="p-1 rounded-circle me-1 " style={{ backgroundColor: 'rgb(228, 174, 75)' }}></span>
-                                                                                <span>Partially Paid</span>
-                                                                            </span> : data[d] === "UnPaid" ?
-                                                                            <span className="d-flex align-items-center justify-content-center rounded-pill px-2" style={{ backgroundColor: 'rgb(254, 211, 209)', width: 'fit-content' }}>
-                                                                                <span className="p-1 rounded-circle me-1 " style={{ backgroundColor: 'rgb(215, 44, 13)' }}></span>
-                                                                                <span>UnPaid</span>
-                                                                            </span> : data[d]
-                                                                }</td>
-                                                            );
-                                                        })}
-                                                    <td>
-                                                        <div className='d-flex justify-content-end me-2'>
-                                                            <button className='p-0 border-0 rounded-1'><img src='Retry.svg' alt='editbutton' /></button>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div className='d-flex justify-content-end me-2'>
-                                                            <button className='btn btn-outline-secondary py-0 px-2'> Print</button>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            )
-                                        })
-                                    }
-                                </tbody>
-                            </Table>
-                        </div>
-                        <Paginationshow />
+                        </div>                        
+                        <Tables data={b2csales} datacolumn={b2csalesColumns}/>
                     </div>
                 </div>
             </div>

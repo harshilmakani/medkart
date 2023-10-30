@@ -4,11 +4,82 @@ import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import { Link } from "react-router-dom";
 import Appdata from "../Appdata";
-import Table from 'react-bootstrap/Table';
-import Paginationshow from "../Dashboard/Paginationshow";
+import Tables from "../Dashboard/Tables";
 
 const ReturnInward = () => {
     const { returninward } = Appdata;
+    const returninwardColumns = [        
+        {
+            tdClass: 'ps-3',
+            valueTdClass: 'ps-3',
+            fieldKey: 'date_time',
+            label: 'Date & Time',
+        },
+        {
+            fieldKey: 'transfer_from',
+            label: 'Transfer From',
+            valueTdClass: 'textcolor',
+        },
+        {
+            fieldKey: 'credit_note_no',
+            label: 'Credit Note No',
+        },
+        {
+            fieldKey: 'voucher_no',
+            label: 'Voucher No',
+        },
+        {
+            fieldKey: 'total_products',
+            label: 'Total products',
+            tdClass: 'text-end',
+            valueTdClass: 'text-end',
+        },
+        {
+            fieldKey: 'total_billed_qty',
+            label: 'Total Billed Qty',
+            tdClass: 'text-end',
+            valueTdClass: 'text-end',
+        },
+        {
+            fieldKey: 'total_received_qty',
+            label: 'Total received Qty',
+            tdClass: 'text-end',
+            valueTdClass: 'text-end',
+        },
+        {
+            fieldKey: 'amount',
+            label: 'Amount',
+            tdClass: 'text-end',
+            valueTdClass: 'text-end',
+        },
+        {
+            fieldKey: 'status',
+            label: 'Status',
+            customfield: (row) => {
+                return (
+                    row === "Inward Completed" ?
+                        <span className="d-flex align-items-center justify-content-center rounded-pill px-2" style={{ backgroundColor: 'rgb(186, 240, 218)', width: 'fit-content' }}>
+                            <span className="p-1 rounded-circle me-1 " style={{ backgroundColor: 'rgb(0, 127, 95)' }}></span>
+                        <span>{row}</span>
+                        </span> : row === "Draft" ?
+                            <span className="d-flex align-items-center justify-content-center rounded-pill px-2" style={{ backgroundColor: 'rgb(235, 238, 240)', width: 'fit-content' }}>
+                            <span className="p-1 rounded-circle me-1 " style={{ backgroundColor: 'rgb(192, 192, 192)' }}></span>
+                            <span>{row}</span>
+                        </span> : row
+                );
+            }
+        },
+        {
+            valueTdClass: '',
+            customfield: (row) => {
+                return (row.status === 'Draft' ?                   
+                    <div className='d-flex justify-content-end me-2'>
+                        <button className='p-0 border-0 rounded-1' onClick={() => console.log("rowdata", row)} ><img src='Edit-button.svg' alt='edit_icon' /></button>
+                    </div> : ''
+                )
+            }
+        },      
+    ];
     return (
         <div>
             <div className="vh-100 w-auto" >
@@ -16,9 +87,9 @@ const ReturnInward = () => {
                     <div className="col my-4 p-0 d-flex justify-content-between">
                         <div className="d-flex align-items-center">
                             <Link to="/" className="me-3"><img src="./home_breadcrumb.svg" alt="home_breadcrumb-icon" /></Link>
-                            <span className="text-secondary">Return</span>
+                            <span style={{ color: 'rgb(85 86 166)' }}>Return</span>
                         </div>
-                        <div><button className="btn btn-primary px-3">+ Add</button></div>
+                        <div><button className="btn text-white px-3" style={{ backgroundColor: 'rgb(85 86 166)' }}>+ Add</button></div>
                     </div>
                     <div className="row shadow-sm p-0 gx-0 rounded-1" style={{ background: "#fff" }}>
                         <div className="col d-flex  align-items-center py-1 ps-4 border-bottom">
@@ -47,60 +118,8 @@ const ReturnInward = () => {
                                     <Button className="btn text-secondary bg-white border-secondary px-3"><img src="sortIcon.svg" alt="sort_icon" className="me-1 " />Sort by</Button>
                                 </ButtonGroup>
                             </div>
-                        </div>
-                        <div className="p-0">
-
-                            <Table responsive>
-                                <thead style={{ background: '#ebeef0' }}>
-                                    <tr className="">
-                                        {
-                                            Object.keys(returninward[0]).map((d, i) => {
-                                                return (
-                                                    <td className="text-capitalize">{d === 'total_products' || d === 'total_billed_qty' || d === 'total_received_qty' || d === 'amount' ?
-                                                        <div className='text-end'>{d.replace(/_/g, ' ')}</div> : d.replace(/_/g, ' ')}</td>
-                                                );
-                                            })
-                                        }
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody style={{ borderStyle: 'none' }}>
-                                    {
-                                        returninward.map((data, i) => {
-                                            return (
-                                                <tr>
-                                                    {
-                                                        Object.keys(returninward[0]).map((d, i) => {
-
-                                                            return (
-                                                                <td>{d === "total_products" || d === "total_billed_qty" || d === 'total_received_qty' || d === 'amount' ? <div className='text-end'>{data[d]}</div>
-                                                                    : d === "transfer_from" ? <span style={{ color: 'rgb(85 86 166)' }}>{data[d]}</span>
-                                                                        : data[d] === "Inward Completed" ?
-                                                                            <span className="d-flex align-items-center justify-content-center rounded-pill px-2" style={{ backgroundColor: 'rgb(186, 240, 218)', width: 'fit-content' }}>
-                                                                                <span className="p-1 rounded-circle me-1 " style={{ backgroundColor: 'rgb(0, 127, 95)' }}></span>
-                                                                                <span>Inward Completed</span>
-                                                                            </span> : data[d] === "Draft" ?
-                                                                                <span className="d-flex align-items-center justify-content-center rounded-pill px-2" style={{ backgroundColor: 'rgb(235, 238, 240)', width: 'fit-content' }}>
-                                                                                    <span className="p-1 rounded-circle me-1 " style={{ backgroundColor: 'rgb(192, 192, 192)' }}></span>
-                                                                                    <span>Draft</span>
-                                                                                </span> : data[d]}</td>
-                                                            );
-                                                        })}
-                                                    <td>
-                                                        {
-                                                            data.status === 'Draft' ? <div className='d-flex justify-content-end me-2'>
-                                                                <button className='p-0 border-0 rounded-1'><img src='Edit-button.svg' alt='editbutton' /></button>
-                                                            </div> : ''
-                                                        }
-                                                    </td>
-                                                </tr>
-                                            )
-                                        })
-                                    }
-                                </tbody>
-                            </Table>
-                        </div>
-                        <Paginationshow />
+                        </div>                        
+                        <Tables data={returninward} datacolumn={returninwardColumns} />
                     </div>
                 </div>
             </div>
