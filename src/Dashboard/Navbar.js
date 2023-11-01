@@ -101,7 +101,7 @@ const Navbar = () => {
                                         <Dropdown.Item ><Link to="/b2bpricingmaster" className="no-underline">B2B Pricing Master</Link></Dropdown.Item>
                                         <Dropdown.Item ><Link to="/b2cPricingMaster" className="no-underline">B2C Pricing Master</Link></Dropdown.Item>
                                         <Dropdown.Item ><Link to="/vendormaster" className="no-underline">Vendor Master</Link></Dropdown.Item>
-                                        <Dropdown.Item ><Link to="/batchmaster" className="no-underline">Batch Master</Link></Dropdown.Item>
+                                        <Dropdown.Item ><Link to="/batch-master" className="no-underline">Batch Master</Link></Dropdown.Item>
                                         <Dropdown.Item ><Link to="/storemaster" className="no-underline">Store Master</Link></Dropdown.Item>
                                         <Dropdown.Item ><Link to="/warehousemaster" className="no-underline">Warehouse Master</Link></Dropdown.Item>
                                         <Dropdown.Item ><Link to="/productchannelmapping" className="no-underline">Product Channel Mapping</Link></Dropdown.Item>
@@ -142,12 +142,12 @@ const Navbar = () => {
                                         <span className="text-dark">Sales</span>
                                     </Dropdown.Toggle>
                                     <Dropdown.Menu>
-                                        <Dropdown.Item href="#/action-1">Pending Sales Order</Dropdown.Item>
-                                        <Dropdown.Item href="#/action-2">Pick Note</Dropdown.Item>
+                                        <Dropdown.Item ><Link to="/pending-sales-order" className="no-underline">Pending Sales Order</Link></Dropdown.Item>
+                                        <Dropdown.Item ><Link to="/pick-note" className="no-underline">Pick Note</Link></Dropdown.Item>
                                         <Dropdown.Item ><Link to="/transferout" className="no-underline">Transfer Out</Link></Dropdown.Item>
                                         <Dropdown.Item ><Link to="/internalsales" className="no-underline">Internal Sales</Link></Dropdown.Item>
                                         <Dropdown.Item ><Link to="/b2csales" className="no-underline">B2C Sales</Link></Dropdown.Item>
-                                        <Dropdown.Item href="#/action-6">Purchase Return</Dropdown.Item>
+                                        <Dropdown.Item ><Link to="/purchase-return" className="no-underline">Purchase Return</Link></Dropdown.Item>
                                     </Dropdown.Menu>
                                 </Dropdown>
                             </li>
@@ -158,8 +158,8 @@ const Navbar = () => {
                                         <span className="text-dark">Purchase</span>
                                     </Dropdown.Toggle>
                                     <Dropdown.Menu>
-                                        <Dropdown.Item href="#/action-1">Purchase Indent</Dropdown.Item>
-                                        <Dropdown.Item href="#/action-2">Purchase Order</Dropdown.Item>
+                                        <Dropdown.Item ><Link to="/purchase-indent" className="no-underline">Purchase Indent</Link></Dropdown.Item>
+                                        <Dropdown.Item ><Link to="/purchase-order" className="no-underline">Purchase Order</Link></Dropdown.Item>
                                         <Dropdown.Item href="#/action-3">Gate Pass</Dropdown.Item>
                                         <Dropdown.Item ><Link to="/checkingtracker" className="no-underline">Checking Tracker</Link></Dropdown.Item>
                                         <Dropdown.Item ><Link to="/grn" className="no-underline">GRN</Link></Dropdown.Item>

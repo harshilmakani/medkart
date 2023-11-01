@@ -32,6 +32,13 @@ import ImportHistory from "../Settings/ImportHistory";
 import B2bPricingMaster from "../Masters/B2bPricingMaster";
 import ExportHistory from "../Settings/ExportHistory";
 import Pages from "./Pages";
+import PurchaseIndent from "../Purchase/PurchaseIndent";
+import PurchaseOrder from "../Purchase/PurchaseOrder";
+import PendingSalesOrder from "../Sales/PendingSalesOrder";
+import PickNote from "../Sales/PickNote";
+import PurchaseReturn from "../Sales/PurchaseReturn";
+import BatchMaster from "../Masters/BatchMaster";
+import MySelect from "./MySelect";
 
 
 const Dashboard = () => {
@@ -47,6 +54,7 @@ const Dashboard = () => {
                     <Route exact path='/moleculemaster' element={<MoleculeMaster/>}/>
                     <Route exact path='/manufacturemaster' element={<ManufactureMaster/>}/>
                     <Route exact path='/vendormaster' element={<VendorMaster/>}/>
+                    <Route exact path='/batch-master' element={<BatchMaster/>}/>
                     <Route exact path='/productchannelmapping' element={<ProductChannelMapping/>}/>
                     <Route exact path='/b2cPricingMaster' element={<B2cPricingMaster/>}/>
                     <Route exact path='/storemaster' element={<StoreMaster/>}/>
@@ -55,9 +63,14 @@ const Dashboard = () => {
                     <Route exact path='/stockadjustment' element={<Stockadjustment/>}/>
                     <Route exact path='/stockrearrange' element={<StockRearrange/>}/>
                     <Route exact path='/reallocation' element={<Reallocation/>}/>
+                    <Route exact path='/pending-sales-order' element={<PendingSalesOrder/>}/>
+                    <Route exact path='/pick-note' element={<PickNote/>}/>
                     <Route exact path='/transferout' element={<TransferOut/>}/>
                     <Route exact path='/internalsales' element={<InternalSales/>}/>
                     <Route exact path='/b2csales' element={<B2cSales/>}/>
+                    <Route exact path='/purchase-return' element={<PurchaseReturn/>}/>
+                    <Route exact path='/purchase-indent' element={<PurchaseIndent/>}/>
+                    <Route exact path='/purchase-order' element={<PurchaseOrder/>}/>
                     <Route exact path='/checkingtracker' element={<CheckingTracker/>}/>
                     <Route exact path='/grn' element={<Grn/>}/>
                     <Route exact path='/purchaseinvoice' element={<PurchaseInvoice/>}/>
@@ -77,6 +90,7 @@ const Dashboard = () => {
 
                 </Routes>                 
                 {/* <Pages/> */}
+                <MySelect/>
         </div>
     );
 }

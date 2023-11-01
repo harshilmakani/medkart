@@ -526,6 +526,15 @@ const vendormaster = [
     },
 ];
 
+const batchmaster = [
+    // {
+    //     batch_no:'trtg',
+    //     mrp:'234',
+    //     expiry_date:'30-10-23',
+    //     manufacturer_date:'30-10-22',
+    // },
+];
+
 const productchannelmapping = [
     {
         product_code: 56739,
@@ -1157,6 +1166,93 @@ const reallocation = [
     },
 ];
 
+const pendingsalesorder = [
+    // {
+    //     store_code:'123',
+    //     store_name:'MEDKART AN JITODIA',
+    //     city:'ANAND',
+    //     so_no:'SO101001063',
+    //     so_date:'20-09-2023',
+    //     ws_type:'SPECIAL',
+    //     placed_by:'Harshil R'
+    // },
+];
+
+const picknote = [
+    {
+        picknote_no:'PS101001009',
+        store_code:'123',
+        store_name:'MEDKART A STADIUM',
+        total_products:'1',
+        total_qty:'2',
+        confirmed_by:'Harshil',
+        status:'Rejected',
+    },
+    {
+        picknote_no:'PS101001008',
+        store_code:'120',
+        store_name:'MEDKART A STADIUM',
+        total_products:'1',
+        total_qty:'2',
+        confirmed_by:'Harshil',
+        status:'Pending',
+    },
+    {
+        picknote_no:'PS101001007',
+        store_code:'156',
+        store_name:'MEDKART A STADIUM',
+        total_products:'20',
+        total_qty:'100',
+        confirmed_by:'Harshil',
+        status:'Invoiced',
+    },
+    {
+        picknote_no:'PS101001006',
+        store_code:'12',
+        store_name:'MEDKART A STADIUM',
+        total_products:'2',
+        total_qty:'34',
+        confirmed_by:'Harshil',
+        status:'Auto cancelled',
+    },
+    {
+        picknote_no:'PS101001005',
+        store_code:'19',
+        store_name:'MEDKART A STADIUM',
+        total_products:'5',
+        total_qty:'10',
+        confirmed_by:'Harshil',
+        status:'Rejected',
+    },
+    {
+        picknote_no:'PS101001004',
+        store_code:'190',
+        store_name:'MEDKART A STADIUM',
+        total_products:'1',
+        total_qty:'6',
+        confirmed_by:'Harshil',
+        status:'Invoiced',
+    },
+    {
+        picknote_no:'PS101001003',
+        store_code:'145',
+        store_name:'MEDKART A STADIUM',
+        total_products:'5',
+        total_qty:'34',
+        confirmed_by:'Harshil',
+        status:'Pending',
+    },
+    {
+        picknote_no:'PS101001001',
+        store_code:'167',
+        store_name:'MEDKART A STADIUM',
+        total_products:'3',
+        total_qty:'20',
+        confirmed_by:'Harshil',
+        status:'Auto cancelled',
+    },
+];
+
 const transferout = [
     {
         date: '20-09-2023',
@@ -1544,6 +1640,341 @@ const b2csales = [
         invoice_by: 'System User',
         payment_status: 'UnPaid',
     },
+];
+
+const purchasereturn = [
+    {
+        picknote_no:'PR101001012',
+        vendor_name:'M K ENTERPRISE',
+        total_products:'1',
+        total_qty:'10',
+        type:'Disputed',
+        status:'Confirmed'
+    },
+    {
+        picknote_no:'PR101001010',
+        vendor_name:'DHWANI HEALTH CARE',
+        total_products:'1',
+        total_qty:'10',
+        type:'Non-Moving',
+        status:'Draft'
+    },
+    {
+        picknote_no:'PR101001009',
+        vendor_name:'ATHARVA BIO PRODUCTS',
+        total_products:'1',
+        total_qty:'25',
+        type:'Disputed',
+        status:'Debit Note Generated'
+    },
+    {
+        picknote_no:'PR101001008',
+        vendor_name:'DHWANI HEALTH CARE',
+        total_products:'1',
+        total_qty:'30',
+        type:'Non-Moving',
+        status:'Confirmed'
+    },
+    {
+        picknote_no:'PR101001006',
+        vendor_name:'ATHARVA BIO PRODUCTS',
+        total_products:'1',
+        total_qty:'10',
+        type:'Disputed',
+        status:'Debit Note Generated'
+    },
+    {
+        picknote_no:'PR101001003',
+        vendor_name:'DHWANI HEALTH CARE',
+        total_products:'1',
+        total_qty:'15',
+        type:'Non-Moving',
+        status:'Checked'
+    },
+    {
+        picknote_no:'PR101001002',
+        vendor_name:'M K ENTERPRISE',
+        total_products:'1',
+        total_qty:'9',
+        type:'Non-Moving',
+        status:'Draft'
+    },
+    {
+        picknote_no:'PR101001000',
+        vendor_name:'ATHARVA BIO PRODUCTS',
+        total_products:'1',
+        total_qty:'6',
+        type:'Disputed',
+        status:'Confirmed'
+    },
+];
+
+const purchaseindent = [
+    // {
+    //     product_name:'BIZFER XT TAB 1X10',
+    //     vendor_name:'-',
+    //     b2b_category:'ETHICAL',
+    //     date_time:'24 Jul 2023 5:15 PM',
+    //     b2b_order_qty:'0',
+    //     b2c_order_qty:'0',
+    //     wh_order_qty:'12',
+    //     purchase_unit:'1',
+    //     qty_to_be_ordered:'12',
+    //     cas:'0',
+    //     ctr:'0',
+    //     status:'Pending',
+    // },
+    // {
+    //     product_name:'BIZFER XT TAB 1X10',
+    //     vendor_name:'-',
+    //     b2b_category:'ETHICAL',
+    //     date_time:'24 Jul 2023 5:15 PM',
+    //     b2b_order_qty:'0',
+    //     b2c_order_qty:'0',
+    //     wh_order_qty:'10',
+    //     purchase_unit:'1',
+    //     qty_to_be_ordered:'10',
+    //     cas:'0',
+    //     ctr:'0',
+    //     status:'Pending',
+    // },
+    // {
+    //     product_name:'TRAFOLIC TAB 1X10',
+    //     vendor_name:'-',
+    //     b2b_category:'ETHICAL',
+    //     date_time:'24 Jul 2023 5:15 PM',
+    //     b2b_order_qty:'0',
+    //     b2c_order_qty:'0',
+    //     wh_order_qty:'5',
+    //     purchase_unit:'1',
+    //     qty_to_be_ordered:'5',
+    //     cas:'0',
+    //     ctr:'0',
+    //     status:'Pending',
+    // },
+    // {
+    //     product_name:'BIZFER XT TAB 1X10',
+    //     vendor_name:'-',
+    //     b2b_category:'ETHICAL',
+    //     date_time:'24 Jul 2023 5:15 PM',
+    //     b2b_order_qty:'0',
+    //     b2c_order_qty:'0',
+    //     wh_order_qty:'6',
+    //     purchase_unit:'1',
+    //     qty_to_be_ordered:'6',
+    //     cas:'0',
+    //     ctr:'0',
+    //     status:'Pending',
+    // },
+    // {
+    //     product_name:'TRAFOLIC TAB 1X10',
+    //     vendor_name:'-',
+    //     b2b_category:'ETHICAL',
+    //     date_time:'24 Jul 2023 5:15 PM',
+    //     b2b_order_qty:'0',
+    //     b2c_order_qty:'0',
+    //     wh_order_qty:'15',
+    //     purchase_unit:'1',
+    //     qty_to_be_ordered:'15',
+    //     cas:'0',
+    //     ctr:'0',
+    //     status:'Pending',
+    // },
+    // {
+    //     product_name:'BIZFER XT TAB 1X10',
+    //     vendor_name:'-',
+    //     b2b_category:'ETHICAL',
+    //     date_time:'24 Jul 2023 5:15 PM',
+    //     b2b_order_qty:'0',
+    //     b2c_order_qty:'0',
+    //     wh_order_qty:'13',
+    //     purchase_unit:'1',
+    //     qty_to_be_ordered:'13',
+    //     cas:'0',
+    //     ctr:'0',
+    //     status:'Pending',
+    // },
+    // {
+    //     product_name:'BIZFER XT TAB 1X10',
+    //     vendor_name:'-',
+    //     b2b_category:'ETHICAL',
+    //     date_time:'24 Jul 2023 5:15 PM',
+    //     b2b_order_qty:'0',
+    //     b2c_order_qty:'0',
+    //     wh_order_qty:'2',
+    //     purchase_unit:'1',
+    //     qty_to_be_ordered:'2',
+    //     cas:'0',
+    //     ctr:'0',
+    //     status:'Pending',
+    // },
+    // {
+    //     product_name:'BIZFER XT TAB 1X10',
+    //     vendor_name:'-',
+    //     b2b_category:'ETHICAL',
+    //     date_time:'24 Jul 2023 5:15 PM',
+    //     b2b_order_qty:'0',
+    //     b2c_order_qty:'0',
+    //     wh_order_qty:'8',
+    //     purchase_unit:'1',
+    //     qty_to_be_ordered:'8',
+    //     cas:'0',
+    //     ctr:'0',
+    //     status:'Pending',
+    // },
+    // {
+    //     product_name:'BIZFER XT TAB 1X10',
+    //     vendor_name:'-',
+    //     b2b_category:'ETHICAL',
+    //     date_time:'24 Jul 2023 5:15 PM',
+    //     b2b_order_qty:'0',
+    //     b2c_order_qty:'0',
+    //     wh_order_qty:'4',
+    //     purchase_unit:'1',
+    //     qty_to_be_ordered:'14',
+    //     cas:'0',
+    //     ctr:'0',
+    //     status:'Pending',
+    // },
+    // {
+    //     product_name:'BIZFER XT TAB 1X10',
+    //     vendor_name:'-',
+    //     b2b_category:'ETHICAL',
+    //     date_time:'24 Jul 2023 5:15 PM',
+    //     b2b_order_qty:'0',
+    //     b2c_order_qty:'0',
+    //     wh_order_qty:'132',
+    //     purchase_unit:'1',
+    //     qty_to_be_ordered:'126',
+    //     cas:'0',
+    //     ctr:'0',
+    //     status:'Pending',
+    // },
+    // {
+    //     product_name:'BIZFER XT TAB 1X10',
+    //     vendor_name:'-',
+    //     b2b_category:'ETHICAL',
+    //     date_time:'24 Jul 2023 5:15 PM',
+    //     b2b_order_qty:'0',
+    //     b2c_order_qty:'0',
+    //     wh_order_qty:'123',
+    //     purchase_unit:'1',
+    //     qty_to_be_ordered:'120',
+    //     cas:'0',
+    //     ctr:'0',
+    //     status:'Pending',
+    // },
+    // {
+    //     product_name:'TRAFOLIC TAB 1X10',
+    //     vendor_name:'-',
+    //     b2b_category:'ETHICAL',
+    //     date_time:'24 Jul 2023 5:15 PM',
+    //     b2b_order_qty:'0',
+    //     b2c_order_qty:'0',
+    //     wh_order_qty:'125',
+    //     purchase_unit:'1',
+    //     qty_to_be_ordered:'121',
+    //     cas:'0',
+    //     ctr:'0',
+    //     status:'Pending',
+    // },
+    // {
+    //     product_name:'TRAFOLIC TAB 1X10',
+    //     vendor_name:'-',
+    //     b2b_category:'ETHICAL',
+    //     date_time:'24 Jul 2023 5:15 PM',
+    //     b2b_order_qty:'0',
+    //     b2c_order_qty:'0',
+    //     wh_order_qty:'129',
+    //     purchase_unit:'1',
+    //     qty_to_be_ordered:'124',
+    //     cas:'0',
+    //     ctr:'0',
+    //     status:'Pending',
+    // },
+];
+
+const purchaseorder = [
+    // {
+    //     po_no:'PO101001033',
+    //     po_date:'20-09-2023',
+    //     vendor_name:'M K ENTERPRISE',
+    //     total_product:'3',
+    //     total_qty:'30',
+    //     po_amount:'₹25',
+    //     created_by_time:'Pujan M 13-09-2023 12:41:27 PM',
+    //     status:'Procured',
+    // },
+    // {
+    //     po_no:'PO101001032',
+    //     po_date:'20-09-2023',
+    //     vendor_name:'LIFE CARE CO',
+    //     total_product:'1',
+    //     total_qty:'10',
+    //     po_amount:'-',
+    //     created_by_time:'Pujan M 13-09-2023 12:41:27 PM',
+    //     status:'Procured',
+    // },
+    // {
+    //     po_no:'PO101001031',
+    //     po_date:'20-09-2023',
+    //     vendor_name:'M K ENTERPRISE',
+    //     total_product:'4',
+    //     total_qty:'6',
+    //     po_amount:'₹25',
+    //     created_by_time:'Pujan M 13-09-2023 12:41:27 PM',
+    //     status:'Draft',
+    // },
+    // {
+    //     po_no:'PO101001030',
+    //     po_date:'20-09-2023',
+    //     vendor_name:'LIFE CARE CO',
+    //     total_product:'3',
+    //     total_qty:'30',
+    //     po_amount:'-',
+    //     created_by_time:'Pujan M 13-09-2023 12:41:27 PM',
+    //     status:'Draft',
+    // },
+    // {
+    //     po_no:'PO101001029',
+    //     po_date:'20-09-2023',
+    //     vendor_name:'DHWANI HEALTH CARE',
+    //     total_product:'3',
+    //     total_qty:'30',
+    //     po_amount:'₹25',
+    //     created_by_time:'Pujan M 13-09-2023 12:41:27 PM',
+    //     status:'PO Sent',
+    // },
+    // {
+    //     po_no:'PO101001028',
+    //     po_date:'20-09-2023',
+    //     vendor_name:'M K ENTERPRISE',
+    //     total_product:'10',
+    //     total_qty:'50',
+    //     po_amount:'₹250',
+    //     created_by_time:'Pujan M 13-09-2023 12:41:27 PM',
+    //     status:'PO Sent',
+    // },
+    // {
+    //     po_no:'PO101001027',
+    //     po_date:'20-09-2023',
+    //     vendor_name:'M K ENTERPRISE',
+    //     total_product:'3',
+    //     total_qty:'30',
+    //     po_amount:'₹25',
+    //     created_by_time:'Pujan M 13-09-2023 12:41:27 PM',
+    //     status:'Partially Procured',
+    // },
+    // {
+    //     po_no:'PO101001026',
+    //     po_date:'20-09-2023',
+    //     vendor_name:'DHWANI HEALTH CARE',
+    //     total_product:'3',
+    //     total_qty:'30',
+    //     po_amount:'₹25',
+    //     created_by_time:'Pujan M 13-09-2023 12:41:27 PM',
+    //     status:'Partially Procured',
+    // },
 ];
 
 const checkingtracker = [
@@ -2417,67 +2848,21 @@ const b2bpricingmaster = [
     },
 ];
 
-const exporthistorycolumn = [
-    {
-        fieldKey: 'import_label',
-        label: "Import Label",
-        tdClass: "ps-4",
-        valueTdClass: "ps-4",
-    },
-    {
-        fieldKey: 'module',
-        label: "Module",
-        tdClass: "",
-        valueTdClass: "",
-    },
-    {
-        fieldKey: 'created_by',
-        label: "Created By",
-        tdClass: "",
-        valueTdClass: "text-primary",
-    },
-    {
-        fieldKey: 'updated_at',
-        label: "Updated At",
-        tdClass: "",
-        valueTdClass: "",
-    },
-    {
-        fieldKey: 'completed_at',
-        label: "Completed At",
-        tdClass: "",
-        valueTdClass: "",
-    },
-    {
-        fieldKey: 'status',
-        label: "Status",
-        tdClass: "",
-        valueTdClass: "",
-    },
-    {
-        fieldKey: '',
-        label: "",
-        tdClass: "",
-        valueTdClass: "",
-    },
-];
-
-
-const exporthistoryTData = [
-    {
-        import_label: 'gfgfh',
-        module: 'gfd',
-        created_by: 'gfd',
-        updated_at: 'dg',
-        completed_at: 'iu',
-        status: 'bnvc',
-    },
-    {
-        created_by: '13',
-        updated_at: '13',
-        completed_at: '45',
-        status: 'None',
-    },
+const exporthistory = [
+    // {
+    //     import_label: 'gfgfh',
+    //     module: 'gfd',
+    //     created_by: 'gfd',
+    //     updated_at: 'dg',
+    //     completed_at: 'iu',
+    //     status: 'bnvc',
+    // },
+    // {
+    //     created_by: '13',
+    //     updated_at: '13',
+    //     completed_at: '45',
+    //     status: 'None',
+    // },
 
 ];
 
@@ -3011,8 +3396,8 @@ const testdatacolumn = [
 ];
 
 export default {
-    unpublished, locationmaster, minmaxmaster, moleculemaster, manufacturemaster, vendormaster, productchannelmapping,
-    b2cPricingMaster, storeMaster, warehousemaster, MrpPtrData, stockadjustment, stockrearrange, reallocation, transferout,
-    internalsales, b2csales, checkingtracker, grn, purchaseinvoice, returninward, creditnotes, bankmaster, receiptdata, payments,
-    usermanagement, importhistory, b2bpricingmaster, exporthistorycolumn, exporthistoryTData, testdata, testdatacolumn
+    unpublished, locationmaster, minmaxmaster, moleculemaster, manufacturemaster, vendormaster, batchmaster, productchannelmapping,
+    b2cPricingMaster, storeMaster, warehousemaster, MrpPtrData, stockadjustment, stockrearrange, reallocation, pendingsalesorder, picknote, transferout,
+    internalsales, b2csales, purchasereturn, purchaseindent, purchaseorder, checkingtracker, grn, purchaseinvoice, returninward, creditnotes, bankmaster, receiptdata, payments,
+    usermanagement, importhistory, b2bpricingmaster, exporthistory, testdata, testdatacolumn
 };
